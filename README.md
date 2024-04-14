@@ -1,28 +1,31 @@
-# Hello
+## Introduction.
+<img align="right" width="275" src="https://github-readme-stats.vercel.app/api/top-langs/?username=xaviduds&theme=catppuccin_mocha&title_color=ffffff&text_color=c9c9c9&card_width=100px&show_icons=true&hide_title=true&langs_count=8&hide_border=true&layout=compact"></img>
 
-You can view my portifolio by following the ![link](https://xaviduds.github.io/).
+🙋 Hi, I'm Eduardo Xavier, a 26/2 graduate in Production Engineering at PUCRS. 
 
-You can open index.html with the browser to view my projects.
+🤖 I focus on automation using Software/Data Engineering, AI and Operations Research. 
 
-If you prefer to run it locally, you can follow these steps:
- 
-0. The environment uses the Nix Programming Language, you can install it through the ![link](https://nix.dev/install-nix.html).
+🧑‍💻 My main tools are 🐍Python and 🐘PostgreSQL. I like 🐧Linux, currently on ❄️<a href="https://nixos.org/">NixOS</a>.
 
-1. Clone this repo:
+🤝 For projects and/or assistance, you can contact me through: <a href="mailto:xaviduds@gmail.com">xaviduds@gmail.com</a>.
+
+## My Portifolio - <a href="https://xaviduds.github.io/">hosted</a>.
+
+To run it locally, using <a href="https://nix.dev/install-nix.html">Nix</a> environments:
 
 ```bash
+#Clone the repo:
 git clone git@github.com:xaviduds/xaviduds.github.io.git
-```
 
-2. Start the environment, at the directory you cloned it:
+#Enter it:
+cd xaviduds.github.io
 
-```bash
-nix flake update
-nix develop
-```
+# To see all the projects:
+<your-browser> index.html
 
-3. Whilst inside the cloned directory, run the command:
+# To recreate any missing model or visualization, first, start the environment:
+nix flake update && nix develop
 
-```bash
-TODO
+# Then run:
+python generate_portifolio.py
 ```
