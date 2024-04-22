@@ -1,0 +1,19 @@
+* {
+  max-width: 100%;
+  text-align: left;
+}
+
+img,
+p,
+h1,
+h3 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+.profilePic {
+  width: 15%;
+  border-radius: 50%;
+}
