@@ -38,14 +38,12 @@ def process_directory(dir_path, src_path):
                     anchor_description = anchor_description_file.read()
 
         if csv_content or markdown_content or plotly_html_path:
-            # Include a link to style.css in the head section
-            css_link = '<link rel="stylesheet" type="text/css" href="../../../style/style.css">'
             html_content = f"""
             <!DOCTYPE html>
             <html>
             <head>
                 <title>Generated HTML</title>
-                {css_link}
+                <link rel="stylesheet" type="text/css" href="../../../style/style.css">
                 <style>
                     table {{
                         border-collapse: collapse;
@@ -106,6 +104,31 @@ def main():
     with open(os.path.join(src_path, 'mainDish.html'), 'w') as main_dish_file:
         main_dish_file.write('')
     process_directory(data_portifolio_path, src_path)
+
+    # Generate and write the content for mainDish.html dynamically
+    main_dish_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Main Dish</title>
+        <link rel="stylesheet" type="text/css" href="../style/style.css">
+    </head>
+    <body>
+    <div = class="center60percent">
+    <h2>AI & ML</h2>
+    """
+    for root, dirs, files in os.walk(data_portifolio_path):
+        for dir in dirs:
+            subdir_path = os.path.join(root, dir)
+            anchor_description_path = os.path.join(subdir_path, 'anchorDescription.md')
+            if os.path.exists(anchor_description_path):
+                with open(anchor_description_path, 'r') as anchor_description_file:
+                    anchor_description = anchor_description_file.read()
+                anchor_link = f'<a href="{os.path.relpath(subdir_path, src_path)}"><h3>{dir}</h3></a>'
+                main_dish_content += f'{anchor_link}<p>{anchor_description}</p>\n'
+    main_dish_content += '</div></body>\n</html>'
+    with open(os.path.join(src_path, 'mainDish.html'), 'w') as main_dish_file:
+        main_dish_file.write(main_dish_content)
 
 if __name__ == "__main__":
     main()
