@@ -3,10 +3,11 @@
   text-align: left;
 }
 
-img,
-p,
-h1,
-h3 {
+/* img, */
+/* p, */
+/* h1, */
+/* h3 */
+.center60percent {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -14,6 +15,9 @@ h3 {
 }
 
 .profilePic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 15%;
   border-radius: 50%;
 }
