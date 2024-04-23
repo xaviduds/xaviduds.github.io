@@ -1,23 +1,16 @@
 * {
   max-width: 100%;
   text-align: left;
-}
-
-/* img, */
-/* p, */
-/* h1, */
-/* h3 */
-.center60percent {
-  display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.center60percent {
   width: 60%;
 }
 
 .profilePic {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
   width: 15%;
   border-radius: 50%;
 }
