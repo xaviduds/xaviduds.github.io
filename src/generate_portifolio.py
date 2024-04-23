@@ -65,16 +65,16 @@ def process_directory(dir_path):
                 html_snippet = html_file.read()
             generated_html_content += f'{html_snippet}\n'
         elif file.endswith(('.jpg', '.jpeg', '.png', '.gif')):
-            generated_html_content += f'<img src="{file_path}" alt="Image">\n'
+            generated_html_content += f'<img src="{file}" alt="Image">\n'
         elif file.endswith('.py'):                
             with open(file_path, 'r') as py_file:
                 py_content = py_file.read()
             # Add the toggleable content for the Python file using <details> and <summary>
             generated_html_content += f'<details> <summary>Python Script Used</summary> <pre>{py_content}</pre> </details>\n'
         elif file.endswith(('.mp4', '.webm', '.ogg')):
-            generated_html_content += f'<video src="{file_path}" controls></video>\n'
+            generated_html_content += f'<video src="{path}" controls></video>\n'
         elif file.endswith(('.mp3', '.wav')):
-            generated_html_content += f'<audio src="{file_path}" controls></audio>\n'
+            generated_html_content += f'<audio src="{path}" controls></audio>\n'
         else:
             # For other file types, provide a download link
             generated_html_content += f'<a href="{file_path}">Download {file}</a>\n'
