@@ -6,20 +6,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>NixOS Config</title>
-  <link rel="stylesheet" href="../../style/style.css">
+  <link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body>
-  <div>
+  <div class="center60percent">
+    <a href="../index.html"> Back to home</a>
+    <br>
+    <br>
+    <img src="../media/desktop.png">
+
     <h3>
       <p>My NixOS configuration - <a href="https://github.com/xaviduds/.nixos">GitHub</a></p>
     </h3>
-    <p>NixOS is a Linux distribution that uses the Nix Programming Language to configure the system in a declarative
-      way.
-    </p>
-    <p>To install NixOS you can follow the instructions at the official website. There's a graphical installer, that you
+
+    <p>NixOS is a <a href="https://www.linux.org/threads/what-is-linux.4106/">Linux</a> distribution that uses the Nix
+      Programming Language to configure the system in a declarative
+      way. To install NixOS you can follow the instructions at the official <a
+        href="https://nixos.org/download/">website</a>.
+      There's a graphical installer, that you
       can close when the booted environment loads, to install through terminal if preferred.</p>
+
+    <p>With nixos, all your system configuration can be completely replicated with one or a few commmands. You must have
+      the files that the configuration will base itself on, and type the command to build the system on
+      top of them.</p>
+    <details>
+      <summary>configuration.nix</summary>
+      <pre id="configuration"></pre>
+    </details>
+    <br>
+
+    <p>My setup uses flakes and home-manager. To understand more about these two mutations I recommend looking at <a
+        href="https://www.youtube.com/results?search_query=nixos+flakes+and+home+manager">YouTube</a> videos and
+      following along.</p>
+
+    <p>Just like every snowflake is unique, so aren't nix flakes if you dont wan't them to be. They can be an exact copy
+      of another person's flake. Quoting the explanation of <a href="https://nixos.wiki/wiki/Flakes">Nix Flakes</a>
+      <i>"Nix flakes provide a
+        standard way to write Nix expressions (and therefore
+        packages) whose dependencies are version-pinned in a lock file, improving reproducibility of Nix
+        installations."</i>
+    </p>
+    <details>
+      <summary>flake.nix</summary>
+      <pre id="flake"></pre>
+    </details>
+    <br>
+
+    <p>Home manager is awesome, it lets you declare your home configuration, using .nix to centralize all your packages
+      configurations in a single file. Search through the file, I believe you will find one or more programs or type of
+      programs you use daily.</p>
+    <details>
+      <summary>home.nix</summary>
+      <pre id="home"></pre>
+    </details>
+    <br>
+
+    <p>So after all that configuration, more than a thousand generations of the NixOS config later, a personalized
+      computer experience is born. After changing 100 lines here, one line there, a perfectly stable, reproductible
+      system with the biggest
+      quantity
+      of fresh packages is arrived at.</p>
+    <img src="https://repology.org/graph/map_repo_size_fresh.svg">
   </div>
+  <script>
+    async function fetchAndDisplayContent(url, elementId) {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const content = await response.text();
+        const contentElement = document.getElementById(elementId);
+        contentElement.textContent = content;
+      } catch (error) {
+        console.error(`Failed to fetch and display content from ${url}:`, error);
+      }
+    }
+
+    // Call the function for each file
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/.nixos/main/configuration.nix', 'configuration');
+      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/.nixos/main/flake.nix', 'flake');
+      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/.nixos/main/home.nix', 'home');
+    });
+  </script>
 </body>
 
 </html>
