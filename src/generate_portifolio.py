@@ -20,29 +20,32 @@ def process_directory(dir_path, src_path):
         csv_content = ""
         markdown_content = ""
         plotly_html_path = ""
-        anchor_text = ""
+        anchor_description = ""
 
         for file in files:
             if file.endswith('_cp.csv'):
                 csv_file_path = os.path.join(root, file)
                 csv_content = csv_to_html_table(csv_file_path)
-            elif file.endswith('.md') and file != 'anchorText.md':
+            elif file.endswith('.md') and file != 'anchorDescription.md':
                 md_file_path = os.path.join(root, file)
                 with open(md_file_path, 'r') as md_file:
                     markdown_content = md_file.read()
             elif file.endswith('Plotly.html'):
                 plotly_html_path = os.path.join(root, file)
-            elif file == 'anchorText.md':
-                anchor_text_path = os.path.join(root, file)
-                with open(anchor_text_path, 'r') as anchor_text_file:
-                    anchor_text = anchor_text_file.read()
+            elif file == 'anchorDescription.md':
+                anchor_description_path = os.path.join(root, file)
+                with open(anchor_description_path, 'r') as anchor_description_file:
+                    anchor_description = anchor_description_file.read()
 
         if csv_content or markdown_content or plotly_html_path:
+            # Include a link to style.css in the head section
+            css_link = '<link rel="stylesheet" type="text/css" href="../../../style/style.css">'
             html_content = f"""
             <!DOCTYPE html>
             <html>
             <head>
                 <title>Generated HTML</title>
+                {css_link}
                 <style>
                     table {{
                         border-collapse: collapse;
@@ -58,9 +61,19 @@ def process_directory(dir_path, src_path):
                 </style>
             </head>
             <body>
+            <div class="center60percent">
+            <a href="../../../index.html">Home</a> | <a href="../../mainDish.html">AI & ML</a>
+            <br>
+            <br>
+            
                 {csv_content}
+                <br>
+                
                 <div>{markdown_content}</div>
+                <br>
+                
                 {f'<iframe src="{plotly_html_path}" width="100%" height="500"></iframe>' if plotly_html_path else ''}
+            </div>
             </body>
             </html>
             """
@@ -71,9 +84,16 @@ def process_directory(dir_path, src_path):
 
             # Create or update mainDish.html in src/
             main_dish_path = os.path.join(src_path, 'mainDish.html')
-            anchor_link = f'<a href="{os.path.relpath(html_file_path, src_path)}"><h3>{anchor_text}</h3></a>'
-            with open(main_dish_path, 'a') as main_dish_file:
-                main_dish_file.write(anchor_link)
+            dir_name = os.path.basename(root)
+            anchor_link = f'<a href="{os.path.relpath(html_file_path, src_path)}"><h3>{dir_name}</h3></a>'
+            
+            # Check if the directory name already exists in mainDish.html
+            with open(main_dish_path, 'r') as main_dish_file:
+                if dir_name not in main_dish_file.read():
+                    with open(main_dish_path, 'a') as main_dish_file_append:
+                        main_dish_file_append.write(anchor_link)
+                        # Append the anchor description
+                        main_dish_file_append.write(f'<p>{anchor_description}</p>')
 
         for subdir in dirs:
             subdir_path = os.path.join(root, subdir)
