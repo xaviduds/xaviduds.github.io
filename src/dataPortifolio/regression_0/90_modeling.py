@@ -1,13 +1,15 @@
 import plotly.graph_objects as go
+import plotly.express as px
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 
 
-df = pd.read_csv('05_regression_0_cp.csv')
+df = pd.read_csv('src/dataPortifolio/regression_0/05_regression_0_cp.csv')
 print(df.head())
 print('---')
 
@@ -67,34 +69,41 @@ df.drop(columns="Purchased", inplace=True)
 
 
 
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+# import matplotlib.pyplot as plt
+# from mpl_toolkits.mplot3d import Axes3D
 
-# Create a 3D subplot
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+# # Create a 3D subplot
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
 
-# Extract data
-x = df['Country']
-y = df['Age']
-z = df['Salary']
+encoder = LabelEncoder()
+df['Country_encoded'] = encoder.fit_transform(df['Country'])# Extract data
 
-# Create a scatter plot
-ax.scatter(x, y, z, alpha=0.5)
+# x = df['Country']
+# y = df['Age']
+# z = df['Salary']
 
-# Set labels
-ax.set_xlabel('Country')
-ax.set_ylabel('Age')
-ax.set_zlabel('Salary')
+# # Create a scatter plot
+# ax.scatter(x, y, z, alpha=0.5)
 
-# Set title
-ax.set_title('Salary by Country and Age')
+# # Set labels
+# ax.set_xlabel('Country')
+# ax.set_ylabel('Age')
+# ax.set_zlabel('Salary')
 
-# Show the plot
-plt.show()
+# # Set title
+# ax.set_title('Salary by Country and Age')
+
+# # Show the plot
+# plt.show()
 
 
+fig = px.scatter_3d(df, x='Country_encoded', y='Age', z='Salary',
+                    title='Salary by Country and Age',
+                    labels={'Country_encoded': 'Country', 'Age': 'Age', 'Salary': 'Salary'})
 
+# Save the plot as an HTML file
+fig.write_html('3d_scatter_plot.html')
 
 
 
