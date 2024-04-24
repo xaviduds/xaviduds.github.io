@@ -16,5 +16,5 @@ cd xaviduds.github.io
 nix flake update && nix develop
 
 # Then run:
-python generate_portifolio.py
+python src/generate_portifolio.py
 ```
