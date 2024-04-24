@@ -5,7 +5,13 @@
     let
       pkgs = import nixpkgs { system = "x86_64-linux"; };
       pythonPackages = pkgs.python311Packages;
-      pyPkgs = with pythonPackages; [ numpy plotly pandas ];
+      pyPkgs = with pythonPackages; [
+        numpy
+        plotly
+        matplotlib
+        pandas
+        scikit-learn
+      ];
     in {
       devShells.x86_64-linux = {
         default = pkgs.mkShell {
