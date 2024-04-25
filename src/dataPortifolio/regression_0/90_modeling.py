@@ -1,118 +1,92 @@
+#Import modules
 import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
-from sklearn.metrics import accuracy_score
-from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import LeaveOneOut
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import accuracy_score, f1_score
 
-
-df = pd.read_csv('src/dataPortifolio/regression_0/05_regression_0_cp.csv')
+# Collect data
+df = pd.read_csv('05_regression_0_cp.csv')
+# df = pd.read_csv('src/dataPortifolio/regression_0/05_regression_0_cp.csv')
 print(df.head())
 print('---')
 
+# Deal with missing data
+numeric_columns = df.select_dtypes(include=[np.number]).columns
+df[numeric_columns] = df[numeric_columns].fillna(df[numeric_columns].mean())
 
-def hold_one_out(df, model, metric=accuracy_score):
-    """
-    Perform hold-one-out evaluation on a dataset.
-    
-    Parameters:
-    - df: pandas DataFrame containing the dataset
-    - model: a trained sklearn model
-    - metric: function to evaluate the model's performance (default is accuracy)
-    
-    Returns:
-    - scores: list of scores for each hold-one-out iteration
-    """
-    scores = []
-    for i in range(len(df)):
-        # Split the dataset into training and testing sets
-        train_df = df.drop(i)
-        test_df = df.iloc[[i]]
-        
-        # Separate features and labels
-        X_train = train_df.drop('label', axis=1)
-        y_train = train_df['label']
-        X_test = test_df.drop('label', axis=1)
-        y_test = test_df['label']
-        
-        # Train the model on the training set
-        model.fit(X_train, y_train)
-        
-        # Make predictions on the test set
-        y_pred = model.predict(X_test)
-        
-        # Calculate the metric
-        score = metric(y_test, y_pred)
-        scores.append(score)
-    
-    return scores
+# Storage Y
 
+# Normalize numeric columns
+numeric_columns = df.select_dtypes(include=[np.number]).columns
+df[numeric_columns] = ((df[numeric_columns] - df[numeric_columns].min())) / (df[numeric_columns].max() - df[numeric_columns].min())
 
-def fillna_with_mean(df):
-    numeric_columns = df.select_dtypes(include=[np.number]).columns
-    df[numeric_columns] = df[numeric_columns].fillna(df[numeric_columns].mean())
-    
-    return df
-
-
-df = fillna_with_mean(df)
-
-Y = df['Purchased']
-df.drop(columns="Purchased", inplace=True)
-
-# df_encoded = pd.get_dummies(df, columns=['Country'])
-# df_encoded = df_encoded.astype(int)
-
-
-
-
-# import matplotlib.pyplot as plt
-# from mpl_toolkits.mplot3d import Axes3D
-
-# # Create a 3D subplot
-# fig = plt.figure()
-# ax = fig.add_subplot(111, projection='3d')
-
-encoder = LabelEncoder()
-df['Country_encoded'] = encoder.fit_transform(df['Country'])# Extract data
-
-# x = df['Country']
-# y = df['Age']
-# z = df['Salary']
-
-# # Create a scatter plot
-# ax.scatter(x, y, z, alpha=0.5)
-
-# # Set labels
-# ax.set_xlabel('Country')
-# ax.set_ylabel('Age')
-# ax.set_zlabel('Salary')
-
-# # Set title
-# ax.set_title('Salary by Country and Age')
-
-# # Show the plot
-# plt.show()
-
-
-fig = px.scatter_3d(df, x='Country_encoded', y='Age', z='Salary',
+# Create a 3D visualization for there are 3 features
+fig = px.scatter_3d(df, x='Country', y='Age', z='Salary',
                     title='Salary by Country and Age',
-                    labels={'Country_encoded': 'Country', 'Age': 'Age', 'Salary': 'Salary'})
+                    labels={'Country': 'Country', 'Age': 'Age', 'Salary': 'Salary'})
 
-# Save the plot as an HTML file
 fig.write_html('3d_scatter_plot.html')
 
+# Encoding
+
+# Country: One-hot enconding
+# encoder = OneHotEncoder(sparse_output=False)
+# encoded_countries = encoder.fit_transform(df[['Country']])
+# encoded_df = pd.DataFrame(encoded_countries, columns=encoder.get_feature_names_out(['Country']))
+# df = df.join(encoded_df).drop('Country', axis=1)
+
+df.drop(columns="Country", inplace=True)
+
+# Purchased: Simple mapping
+df['Purchased'] = df['Purchased'].map({'Yes': 1, 'No': 0})
 
 
+# Train-test split 
 
 
+X = df.drop('Purchased', axis=1).values
+y = df['Purchased'].values
+
+# Initialize LeaveOneOut and LogisticRegression
+loo = LeaveOneOut()
+log_reg = LinearRegression()
+
+# Lists to store the true labels and predicted labels for each test set
+true_labels = []
+predicted_labels = []
+
+# Perform leave-one-out cross-validation
+for train_index, test_index in loo.split(X):
+    X_train, X_test = X[train_index], X[test_index]
+    y_train, y_test = y[train_index], y[test_index]
+    
+    # Fit the model
+    log_reg.fit(X_train, y_train)
+    
+    # Make predictions
+    y_pred = log_reg.predict(X_test)
+    
+    # Store the true and predicted labels
+    true_labels.append(y_test[0])
+    predicted_labels.append(y_pred[0])
+
+# Calculate and print the F1 score
+f1 = f1_score(true_labels, predicted_labels)
+print(f'F1 Score: {f1}')
+# Trainning
 
 
+# Prediction
+
+
+# Evaluation
 
 print('---')
 
-print(df.head())
+print(df.head(12))
 # print(df_encoded.head())
