@@ -38,10 +38,10 @@ def process_directory(dir_path):
     # Sort files alphabetically
     files.sort()
 
-    for file in files:
-        file_path = os.path.join(dir_path, file)
-        if file.endswith('.py'):
-            subprocess.run(['python', file_path])
+    # for file in files:
+    #     file_path = os.path.join(dir_path, file)
+    #     if file.endswith('.py'):
+    #         subprocess.run(['python', file_path])
 
     for file in files:
         # Skip the generated.html file itself
