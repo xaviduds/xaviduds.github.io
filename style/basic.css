@@ -1,3 +1,8 @@
+* {
+  background-color: #1e1e2e;
+  color: #cdd6f4;
+}
+
 .center60percent {
   width: 60%;
   margin-left: auto;
@@ -32,9 +37,7 @@ th {
 }
 
 .tag-button.active-tag {
-  background-color: #4CAF50;
-  /* Green */
-  color: white;
+  background-color: #a6e3a1;
 }
 
 .search-sort-container {

@@ -12,7 +12,7 @@ export const projects = [
     summary: 'Tool for registry and connection between Needs and Contributions with open scope.',
     modifiedDate: '2023-04-23',
     showcasePath: 'src/lince/showcase.html',
-    startingOrder: 2,
+  //   startingOrder: 2,
   },
   {
     name: 'NixOS',
@@ -20,7 +20,7 @@ export const projects = [
     summary: 'The workings of my Linux distribution + my configuration.',
     modifiedDate: '2023-04-28',
     showcasePath: 'src/nixos/showcase.html',
-    startingOrder: 1,
+  //   startingOrder: 1,
   },
   {
     name: 'Purchased',
@@ -28,7 +28,7 @@ export const projects = [
     summary: 'Prediction of purchasing.',
     modifiedDate: '2023-04-23',
     showcasePath: 'src/purchased/showcase.html',
-    startingOrder: 3,
+  //   startingOrder: 3,
   },
   {
     name: 'R.U.S.T',
@@ -36,7 +36,7 @@ export const projects = [
     summary: '(R)andom R(u)st (S)cripts for (T)rainning.',
     modifiedDate: '2023-04-23',
     showcasePath: 'src/rust_learning/showcase.html',
-    startingOrder: 0,
+  //   startingOrder: 0,
   },
   // {
   //   name: 'Titanic',
@@ -44,6 +44,6 @@ export const projects = [
   //   summary: 'The famous titanic dataset.',
   //   modifiedDate: '2023-04-23',
   //   showcasePath: 'src/titanic/showcase.html',
-  // startingOrder: 1,
+  // // startingOrder: 1,
   // },
 ];
