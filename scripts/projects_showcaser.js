@@ -151,6 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function toggleIncludeMode() {
   includeMode = !includeMode;
-  document.getElementById('include-mode-toggle').textContent = includeMode ? 'Include Mode' : 'Exclude Mode';
+  document.getElementById('include-mode-toggle').textContent = includeMode ? 'Inclusionary Search' : 'Exclusionary Search';
   renderProjects();
 }
