@@ -1,18 +1,15 @@
-* {
-  max-width: 100%;
-  text-align: left;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .center60percent {
   width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .profilePic {
   display: block;
   width: 15%;
   border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 table {
@@ -32,4 +29,15 @@ th {
   background-color: #f2f2f2;
   font-weight: bold;
   color: #333;
+}
+
+.tag-button.active-tag {
+  background-color: #4CAF50;
+  /* Green */
+  color: white;
+}
+
+.search-sort-container {
+  display: flex;
+  justify-content: space-between;
 }
