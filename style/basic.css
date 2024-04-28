@@ -1,13 +1,31 @@
-* {
+html,
+body {
+  margin: 0;
+  padding: 0;
   background-color: #1e1e2e;
+  /* This sets the background color for the full page */
   color: #cdd6f4;
+  font-family: 'JetBrains Mono', Arial, Verdana, Tahoma, 'Trebuchet MS', 'Times New Roman', Georgia, 'Courier New', sans-serif;
 }
 
 .center60percent {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
+  background-color: #1e1e2e;
+  /* This ensures the background color fills the content area */
 }
+
+/* * { */
+/* background-color: #1e1e2e; */
+/* color: #cdd6f4; */
+/* } */
+
+/* .center60percent { */
+/* width: 60%; */
+/* margin-left: auto; */
+/* margin-right: auto; */
+/* } */
 
 .profilePic {
   display: block;
