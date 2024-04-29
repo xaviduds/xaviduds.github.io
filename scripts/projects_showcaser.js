@@ -13,14 +13,15 @@ const predefinedTags = [
 let activeTags = [];
 let sortDirection = { name: null, date: null };
 let currentSearchText = '';
-let includeMode = true; // true for including, false for excluding
+let includeMode = true;
+let searchTitlesOnly = false;
 
 function createProjectCard(project) {
   const card = document.createElement('div');
   card.className = 'project-card';
   card.appendChild(createElement('h2', project.name, project.showcasePath));
   card.appendChild(createElement('p', project.summary));
-  card.appendChild(createElement('p', `Tags: ${project.tags.join(', ')}`));
+  card.appendChild(createElement('p', `${project.tags.join(' ')}`));
   card.appendChild(createElement('p', `Last Modified: ${project.modifiedDate}`));
   return card;
 }
@@ -64,14 +65,20 @@ function populateTags() {
     tagsBar.appendChild(createTagButton(tag));
   });
 }
+
+function toggleSearchTitles() {
+  searchTitlesOnly = !searchTitlesOnly;
+  document.getElementById('search-title-toggle').textContent = searchTitlesOnly ? 'Search Titles Only' : 'Search Titles/Summaries';
+  filterProjects();
+}
+
 function filterProjects() {
   const searchBar = document.getElementById('search-bar');
-  const titleToggle = document.getElementById('title-toggle');
   const searchText = searchBar.value.toLowerCase();
   const filteredProjects = projects.filter(project => {
     const searchInTitle = project.name.toLowerCase().includes(searchText);
     const searchInSummary = project.summary.toLowerCase().includes(searchText);
-    return titleToggle.checked ? searchInTitle : searchInTitle || searchInSummary;
+    return searchTitlesOnly ? searchInTitle : searchInTitle || searchInSummary;
   });
   renderProjects(filteredProjects);
 }
@@ -127,26 +134,13 @@ function updateSortIndicators(criteria, direction) {
   });
 }
 
-// function toggleIncludeMode() {
-//   includeMode = !includeMode;
-//   renderProjects();
-// }
-
-// document.getElementById('search-bar').addEventListener('input', filterProjects);
-// document.getElementById('title-toggle').addEventListener('change', filterProjects);
-// document.getElementById('include-mode-toggle').addEventListener('click', toggleIncludeMode);
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   populateTags();
-//   renderProjects();
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
   populateTags();
   renderProjects();
   document.getElementById('sort-name').addEventListener('click', () => sortProjects('name'));
   document.getElementById('sort-date').addEventListener('click', () => sortProjects('date'));
   document.getElementById('include-mode-toggle').addEventListener('click', toggleIncludeMode);
+  document.getElementById('search-title-toggle').addEventListener('click', toggleSearchTitles);
 });
 
 function toggleIncludeMode() {
