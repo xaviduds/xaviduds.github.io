@@ -54,3 +54,34 @@ body {
 .tag-button.active-tag {
   background-color: #a6e3a1;
 }
+
+.project-card {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 7px;
+  border: 1px solid white;
+  animation: smoothColors 5s infinite alternate;
+}
+
+@keyframes smoothColors {
+  0% {
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #00ff00, 0 0 30px #0000ff;
+  }
+
+  25% {
+    box-shadow: 0 0 10px #ff4500, 0 0 20px #ff8c00, 0 0 30px #ffa500;
+  }
+
+  50% {
+    box-shadow: 0 0 10px #ffd700, 0 0 20px #adff2f, 0 0 30px #7fff00;
+  }
+
+  75% {
+    box-shadow: 0 0 10px #1e90ff, 0 0 20px #0000ff, 0 0 30px #ff00ff;
+  }
+
+  100% {
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #00ff00, 0 0 30px #0000ff;
+  }
+}

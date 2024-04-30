@@ -56,6 +56,35 @@
 
   </footer>
   <script type="module" src="scripts/projects_showcaser.js"></script>
+  <script>
+
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function setRandomBoxShadow(element) {
+      const boxShadowColor1 = getRandomColor();
+      const boxShadowColor2 = getRandomColor();
+      const boxShadowColor3 = getRandomColor();
+
+      element.style.boxShadow = `0 0 10px ${boxShadowColor1}, 
+                             0 0 20px ${boxShadowColor2}, 
+                             0 0 30px ${boxShadowColor3}`;
+    }
+
+    // Get the .project-card element
+    const projectCard = document.querySelector('.project-card');
+
+    // Set an interval to change the box shadow every 500 milliseconds
+    setInterval(() => {
+      setRandomBoxShadow(projectCard);
+    }, 5000);
+  </script>
 </body>
 
 </html>
