@@ -4,6 +4,7 @@ const predefinedTags = [
  'ML', 
  'App',
  'Python', 
+ 'SQL',
  'Rust',
  'Nix',
  'Linux',
@@ -12,7 +13,7 @@ const predefinedTags = [
 let activeTags = [];
 let sortDirection = { name: null, date: null };
 let currentSearchText = '';
-let includeMode = true;
+let includeMode = false;
 let searchTitlesOnly = false;
 
 function createProjectCard(project) {

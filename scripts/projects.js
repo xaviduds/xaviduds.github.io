@@ -8,7 +8,7 @@ export const projects = [
   // },
   {
     name: 'Lince',
-    tags: ['Python', 'App'],
+    tags: ['Python', 'SQL', 'App'],
     summary: 'Tool for registry and connection between Needs and Contributions with open scope.',
     modifiedDate: '2023-04-23',
     showcasePath: 'src/lince/showcase.html',
