@@ -7,12 +7,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>NixOS Config</title>
   <link rel="stylesheet" href="../../style/basic.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 
 <body>
   <div class="center60percent">
     <br>
-    <a href="../../index.html">Home</a>
+    <a href="../../index.html" class="home-icon" rel="noopener noreferrer">
+      <i class="fa fa-home" aria-hidden="true"> Home</i>
+    </a>
+    <img class="profilePic" src="logo.png">
 
     <h3>My NixOS configuration - <a href="https://github.com/xaviduds/.nixos">GitHub</a></h3>
     <img width="100%" src="desktop.png">
@@ -111,6 +115,22 @@
     <h3>Packages per distro/channel</h3>
     <img src="https://repology.org/graph/map_repo_size_fresh.svg">
   </div>
+  <br>
+
+  <footer class="footer">
+    <a href="https://github.com/xaviduds" class="github-icon" target="_blank" rel="noopener noreferrer"> <i
+        class="fab fa-github"></i></a>
+
+    <a href="https://www.linkedin.com/in/xaviduds" class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+    <a href="mailto:xaviduds@gmail.com" class="email-icon" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-envelope"></i>
+    </a>
+
+  </footer>
+
   <script>
     async function fetchAndDisplayContent(url, elementId) {
       try {
