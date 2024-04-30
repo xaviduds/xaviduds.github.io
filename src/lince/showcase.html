@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NixOS Config</title>
+  <link rel="stylesheet" href="../../style/basic.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+  <div class="center60percent">
+    <br>
+
+    <a href="../../index.html" class="home-icon" rel="noopener noreferrer">
+      <i class="fa fa-home" aria-hidden="true"> Home</i>
+    </a>
+    <img class="profilePic" src="lince_branco.png">
+
+    <h1 id="o-que-a-lince-">O que é a Lince?</h1>
+    <p>A lince é uma ferramenta para cadastro e conexão entre necessidades e contribuições de escopo livre.</p>
+    <p>A documentação é este README.md. As tarefas estão no <a
+        href="https://github.com/orgs/lince-social/projects/6">Kanban</a>. E-mail para contato: <a
+        href="mailto:xaviduds@gmail.com">xaviduds@gmail.com</a>.</p>
+    <p>A lince é uma iniciativa sem fins lucrativos. Com o intuito de remunerar desenvolvedores, utiliza-se de
+      financiamento popular, através de: <a href="https://www.apoia.se/lince">apoia.se/lince</a>, <a
+        href="https://github.com/sponsors/lince-social">github sponsors</a> e <a
+        href="https://www.patreon.com/lince_social">patreon</a>.</p>
+    <h1 id="instala-o-">Instalação:</h1>
+    <p>Utiliza-se PostgreSQL e <a href="https://nix.dev/install-nix.html">Nix</a> para criar os ambientes de execução de
+      código. Verifique que estão instalados.</p>
+
+    <h3>Clone e entre no repositório:</h3>
+    git clone git@github.com:lince-social/lince.git && cd lince
+
+    <h3>Inicie o ambiente:</h3>
+    nix flake update && nix develop
+
+    <h3>Rode a Lince:</h3>
+    streamlit run src/lince.py
+    <br>
+    <br>
+
+    <h1 id="teoria-">Teoria:</h1>
+    <p>Pode ser perspicaz acompanhar essa parte com o código da <a
+        href="https://github.com/lince-social/lince/blob/main/src/postgre.sql">base_de_dados.sql</a> ao lado.</p>
+    <p>A lince é focada em cadastros e operações sobre esses cadastros, para começar a explicar tal mecanismo entraremos
+      em um consenso do significante de Necessidades e Contribuições. Após isso será comentado sobre como imagina-se a
+      tecnologia de uma Lince funcional. E por final o impacto imaginado com tal tecnologia.</p>
+    <h1 id="necessidades-">Necessidades:</h1>
+    <p>Temos necessidades diferentes, podendo ser:</p>
+    <ul>
+      <li>Básicas e pessoais, como: água, luz, saneamento, saúde, educação, habitação, alimentação, roupas, hábitos,
+        natureza, comunidade, etc.</li>
+      <li>Serviços, como: transporte, apoio técnico, enfermagem, jardinagem, cultura, entretenimento, turismo,
+        automatização, etc.</li>
+      <li>Outros bens de consumo, como: eletrodomésticos, ferramentas de trabalho, internet, computação, máquinas e
+        matéria prima, etc.</li>
+    </ul>
+    <h1 id="contribui-es-">Contribuições:</h1>
+    <p>Assim como diversas formas de saciar tais necessidades, de forma individual ou através de organizações,
+      contribuindo com:</p>
+    <ul>
+      <li>Produtos.</li>
+      <li>Serviços, dentre eles: aulas, atendimento técnico, instalações, desenvolvimento, consultoria, etc.</li>
+      <li>Assistência social, trabalho comunitário, itens para doação, etc.</li>
+      <li>Informação, infraestrutura, financiamento, presença, etc.</li>
+      <li>Trabalho em geral.</li>
+    </ul>
+    <h1 id="tecnologia-">Tecnologia:</h1>
+    <h3 id="possibilidades-">Possibilidades:</h3>
+    <p>Começa-se com software livre (FLOSS). Qualquer pessoa pode usar a Lince com o código padrão ou criar sua versão,
+      como customizações que ainda conseguem trocar informações. Estudam-se formas de autenticar identidades e
+      transferir dados de forma descentralizada, com protocolos pub/sub, Merkle-CRDTs, bases de dados eventualmente
+      consistentes e possívelmente blockchain, mas nada de cripto! </p>
+    <h3 id="lince-padr-o-">Lince padrão:</h3>
+    <p>Pessoas poderão ter controle total dos seus dados, sendo o principal deles o &#39;cadastro&#39;. Quando a
+      quantidade do mesmo é positiva, ele é uma possível contribuição, caso negativa, é uma necessidade, se 0, não é
+      contabilizado. Todas as outras funcionalidades tem como objetivo modificar essa quantidade.</p>
+    <p>O cadastro poderá ser feito por digitação, voz, foto ou vídeo, tornando-o acessível e fácil de usar. Para aqueles
+      sem acesso à tecnologia, deseja-se ser possível adicionar suas necessidades e contribuições na Lince por meio de
+      qualquer dispositivo.</p>
+    <p>Após cadastros serem criados, existe a possibilidade de troca, com &#39;proposta_transferência&#39;. Caso
+      deseje-se realizar uma troca de recursos, pode se colocar uma proposta de tal conteúdo:
+      cadastro1 recebe tal quantidade de cadastro2, em troca aceito que cadastro3 envie tanto de quantidade para
+      cadastro4. Exemplo: se você transferir uma quantidade de maçã para meu cadastro de maçã, transfiro tantos
+      dinheiros do meu cadastro para o seu. Contribuição e Retribuição (opcional caso seja uma doação). </p>
+    <p>Com o intuito de automatizar trabalho manual de modificar quantidade, é possível utilizar-se de uma
+      &#39;observação_ponto&#39;. Quanto um certo cadastro chegar a uma certa quantidade, a quantidade de um cadastro é
+      alterada mais ou menos um valor, ou um script é rodado. Da mesma forma, pode-se realizar uma
+      &#39;observacao_anicca&#39;, quando um cadastro modifica uma quantidade para mais ou para menos, outro cadastro
+      tem seu valor modificado com uma proporção, podendo ser 1:1, 80:1, etc. Por fim existe a periodicidade, que com o
+      passar de um tempo específico, também altera a quantidade do cadastro. </p>
+    <p>No momento, utiliza-se Python pra a lógica e browser frontend e postgresql para o banco de dados.</p>
+    <h1 id="impacto-">Impacto:</h1>
+    <p>É importante destacar que a Lince é responsável por facilitar a conexão entre pessoas e recursos, transformando
+      necessidades e contribuições em dados. Os custos relacionados à interação, como transporte, produção e serviços em
+      si, continuam sendo responsabilidade das partes envolvidas.</p>
+    <p>Visando a maior flexibilidade de uso, a Lince consegue mapear e organizar diversas interações. Desde o
+      fornecimento de apoio após desastres naturais até o planejamento de eventos, tarefas de organizações e pessoais,
+      venda de produtos, etc. Queremos minimizar necessidades não atendidas, alinhar demandas e distribuições, e
+      entender em que devemos trabalhar.</p>
+    <p>Muitas horas de trabalho humano são economizadas com o desenvolvimento tecnológico concentrado em um sistema. Tal
+      concentração é possível com a flexibilidade e descentralização do aplicativo. Grandes empresas que não participam
+      do processo operacional, mas recebem uma parte dos recursos de trabalhadores por oferecerem as plataformas
+      deixarão de serem necessárias. Relações e fenômenos econômicos existentes poderão migrar para uma tecnologia com
+      interações diretas entre pessoas caso desejado ou indiretas através de órgãos que centralizam e validam a
+      identidade de profissionais de uma área.</p>
+    <p>Atualmente, grandes empresas e conglomerados tem a vantagem de poder desenvolver e dominar redes digitais e de
+      suprimentos que as pessoas utilizam para trocar recursos. Com isso recebem uma a maior parcela possível dos
+      rendimentos, participando o mínimo possível dos custos das operações. Com um aplicativo descentralizado, que
+      permita o contato direto entre pessoas (desenvolvido por uma organização sem fins lucrativos que disponibiliza o
+      código aberto) plataformas de Big Techs não serão mais necessárias e trabalhadores ficarão com uma parcela maior
+      dos rendimentos.</p>
+    <p>Ao digitalizar as informações, a Lince possibilita o uso de algoritmos de otimização e aprendizado de máquina
+      para um planejamento mais efetivo das contribuições. No entanto, é necessário considerar os vieses humanos
+      presentes nos algoritmos e garantir transparência, consentimento e democracia ao implementar qualquer inteligência
+      artificial tomadora de decisão.</p>
+    <p>A troca de informações sobre necessidades em tempo real tem o potencial de diminuir o &quot;efeito chicote&quot;
+      nas redes de suprimentos. Esse efeito ocorre quando uma compra esperada não acontece, acumulando perdas e gerando
+      ineficiências. Com um número significativo de usuários cadastrados as previsões de demanda se tornam
+      desnecessárias. Caso a superprodução e perda de atendimento à demanda por informações incompletas e desatualizadas
+      ocorra, ela pode ser mitigada com a consulta de cadastros Lince verdadeiros e atualizados. </p>
+    <p>Mas o que fazer para incentivar tal forma de uso da tecnologia? É preciso desenvolver algo que faça sentido para
+      as pessoas, algo que elas precisem, que as ajude na primeira interação delas, para construir de micro a macro
+      impactos. </p>
+  </div>
+  <footer class="footer">
+    <a href="https://github.com/xaviduds" class="github-icon" target="_blank" rel="noopener noreferrer"> <i
+        class="fab fa-github"></i></a>
+
+    <a href="https://www.linkedin.com/in/xaviduds" class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+    <a href="mailto:xaviduds@gmail.com" class="email-icon" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-envelope"></i>
+    </a>
+
+  </footer>
+</body>
+
+</html>

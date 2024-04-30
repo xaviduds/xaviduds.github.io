@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="style/basic.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eduardo Xavier's Portfolio</title>
+  <link rel="stylesheet" href="style/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 
-<body>
+<body class="teste">
   <div class="center60percent">
 
     <img class="profilePic" src="https://avatars.githubusercontent.com/u/67171953" />
@@ -26,8 +27,7 @@
       <div class="search-tags-container">
 
         <input type="text" id="search-bar" placeholder="Search projects...">
-        <label for="title-toggle">Search only titles</label>
-        <input type="checkbox" id="title-toggle">
+        <button id="search-title-toggle">Search Titles Only</button>
 
         <button id="include-mode-toggle">Inclusionary Search</button>
       </div>
@@ -40,7 +40,21 @@
     <br>
     <div id="tags-bar"></div>
   </div>
-  <div class="center60percent" id="projects-container"></div>
+  <div class="center60percent" vertical-align="top" id="projects-container"></div>
+
+  <footer class="footer">
+    <a href="https://github.com/xaviduds" class="github-icon" target="_blank" rel="noopener noreferrer"> <i
+        class="fab fa-github"></i></a>
+
+    <a href="https://www.linkedin.com/in/xaviduds" class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+    <a href="mailto:xaviduds@gmail.com" class="email-icon" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-envelope"></i>
+    </a>
+
+  </footer>
   <script type="module" src="scripts/projects_showcaser.js"></script>
 </body>
 
