@@ -1,7 +1,6 @@
 import {projects} from './projects.js';
 
 const predefinedTags = [
- 'AI', 
  'ML', 
  'App',
  'Python', 

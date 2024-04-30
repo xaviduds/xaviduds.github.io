@@ -12,7 +12,6 @@ export const projects = [
     summary: 'Tool for registry and connection between Needs and Contributions with open scope.',
     modifiedDate: '2023-04-23',
     showcasePath: 'src/lince/showcase.html',
-  //   startingOrder: 2,
   },
   {
     name: 'NixOS',
@@ -20,23 +19,20 @@ export const projects = [
     summary: 'The workings of my Linux distribution + my configuration.',
     modifiedDate: '2023-04-28',
     showcasePath: 'src/nixos/showcase.html',
-  //   startingOrder: 1,
   },
+  // {
+  //   name: 'Purchased',
+  //   tags: ['ML', 'Python'],
+  //   summary: 'Prediction of purchasing.',
+  //   modifiedDate: '2023-04-23',
+  //   showcasePath: 'src/purchased/showcase.html',
+  // },
   {
-    name: 'Purchased',
-    tags: ['ML', 'Python'],
-    summary: 'Prediction of purchasing.',
-    modifiedDate: '2023-04-23',
-    showcasePath: 'src/purchased/showcase.html',
-  //   startingOrder: 3,
-  },
-  {
-    name: 'R.U.S.T',
+    name: 'Y.A.B.R.U.S.T',
     tags: ['Rust'],
-    summary: '(R)andom R(u)st (S)cripts for (T)rainning.',
+    summary: '(Y)et (A)nother (B)unch of (R)andom R(u)st (S)cripts for (T)rainning.',
     modifiedDate: '2023-04-23',
     showcasePath: 'src/rust_learning/showcase.html',
-  //   startingOrder: 0,
   },
   // {
   //   name: 'Titanic',
@@ -44,6 +40,5 @@ export const projects = [
   //   summary: 'The famous titanic dataset.',
   //   modifiedDate: '2023-04-23',
   //   showcasePath: 'src/titanic/showcase.html',
-  // // startingOrder: 1,
   // },
 ];
