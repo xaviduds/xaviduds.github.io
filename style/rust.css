@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   color: #cdd6f4;
+  height: 100%;
   background-color: #1e1e2e;
 }
 
@@ -13,11 +14,25 @@ body {
   margin-right: auto;
 }
 
+/* PFP Stuff */
+
+.profilePic {
+  display: block;
+  width: 15%;
+  /* border-radius: 50%; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer Stuff */
+
 .footer {
-  /* width: 100%; */
+  position: absolute;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   height: 2.5rem;
   background-color: #11111b;
 }
@@ -27,14 +42,6 @@ body {
   color: #cdd6f4;
   margin-left: 4px;
   margin-right: 4px;
-}
-
-.profilePic {
-  display: block;
-  width: 15%;
-  /* border-radius: 50%; */
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .fa-home {
