@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NixOS Config</title>
+  <link rel="stylesheet" href="../../style/rust.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+  <div class="center60percent">
+    <br>
+    <a href="../../index.html" class="home-icon" rel="noopener noreferrer">
+      <i class="fa fa-home" aria-hidden="true"> Home</i>
+    </a>
+    <br>
+    <br>
+
+    <img class="profilePic" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Original_Ferris.svg">
+    <h2>Y.A.B.R.U.S.T. - (Y)et (A)nother (B)unch of (R)andom R(u)st (S)cripts for (T)rainning</h2>
+    <p>This page loads all the random Rust learning scripts in one of my portfolio dirs. It does it through an API,
+      might take a while to load.
+      Real Rust projects will have their own page, available at home. The file names are for clear understanding in this
+      page, I don't usually name it that way.</p>
+    <h3>Scripts:</h3>
+
+    <div id="rustScripts"></div>
+  </div>
+
+  <footer class="footer">
+    <a href="https://github.com/xaviduds" class="github-icon" target="_blank" rel="noopener noreferrer"> <i
+        class="fab fa-github"></i></a>
+
+    <a href="https://www.linkedin.com/in/xaviduds" class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+    <a href="mailto:xaviduds@gmail.com" class="email-icon" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-envelope"></i>
+    </a>
+
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      fetchRustScripts();
+    });
+
+    function fetchRustScripts() {
+      fetch('https://api.github.com/repos/xaviduds/xaviduds.github.io/contents/src/rust_learning')
+        .then(response => response.json())
+        .then(files => {
+          files.filter(file => file.name.endsWith('.rs')).forEach(file => {
+            createFileDetails(file.name, file.download_url);
+          });
+        })
+        .catch(error => console.error('Error fetching file list:', error));
+    }
+
+    function createFileDetails(fileName, fileUrl) {
+      const rustScriptsContainer = document.getElementById('rustScripts');
+
+      const details = document.createElement('details');
+      const summary = document.createElement('summary');
+      summary.textContent = fileName;
+      details.appendChild(summary);
+
+      const pre = document.createElement('pre');
+      pre.id = fileName;
+      details.appendChild(pre);
+
+      // Add a <br> element after each <details> element
+      const br = document.createElement('br');
+      rustScriptsContainer.appendChild(details);
+      rustScriptsContainer.appendChild(br);
+
+      fetch(fileUrl)
+        .then(response => response.text())
+        .then(content => {
+          document.getElementById(fileName).textContent = content;
+        })
+        .catch(error => console.error(`Error fetching content for ${fileName}:`, error));
+    }
+
+    // Remove the button event listener as it's no longer needed
+    document.getElementById('fetch-rust-scripts').remove();
+  </script>
+</body>
+
+</html>
