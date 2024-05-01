@@ -1,5 +1,3 @@
-import {projects} from './projects.js';
-
 const predefinedTags = [
  'ML', 
  'App',
@@ -10,11 +8,47 @@ const predefinedTags = [
  'Linux',
 ];
 
-let activeTags = [];
-let sortDirection = { name: null, date: null };
-let currentSearchText = '';
-let includeMode = false;
-let searchTitlesOnly = false;
+const projects = [
+  // {
+  //   name: '',
+  //   tags: ['', ''],
+  //   summary: '',
+  //   showcasePath: 'src//showcase.html'
+  // },
+  {
+    name: 'Lince',
+    tags: ['Python', 'SQL', 'App'],
+    summary: 'Tool for registry and connection between Needs and Contributions with open scope.',
+    showcasePath: 'src/lince/showcase.html',
+  },
+  {
+    name: 'NixOS',
+    tags: ['Linux', 'Nix'],
+    summary: 'The workings of my Linux distribution + my configuration.',
+    showcasePath: 'src/nixos/showcase.html',
+  },
+  // {
+  //   name: 'Purchased',
+  //   tags: ['ML', 'Python'],
+  //   summary: 'Prediction of purchasing.',
+  //   showcasePath: 'src/purchased/showcase.html',
+  // },
+  {
+    name: 'Y.A.B.R.U.S.T',
+    tags: ['Rust'],
+    summary: '(Y)et (A)nother (B)unch of (R)andom R(u)st (S)cripts for (T)rainning.',
+    showcasePath: 'src/rust_learning/showcase.html',
+  },
+  // {
+  //   name: 'Titanic',
+  //   tags: ['ML', 'Python'],
+  //   summary: 'The famous titanic dataset.',
+  //   showcasePath: 'src/titanic/showcase.html',
+  // },
+];
+
+let sortDirection = { name: null };
+let filters = [];
 
 function createProjectCard(project) {
   const card = document.createElement('div');
@@ -22,7 +56,6 @@ function createProjectCard(project) {
   card.appendChild(createElement('h2', project.name, project.showcasePath));
   card.appendChild(createElement('p', project.summary));
   card.appendChild(createElement('p', `${project.tags.join(' ')}`));
-  card.appendChild(createElement('p', `Last Modified: ${project.modifiedDate}`));
   return card;
 }
 
@@ -48,9 +81,7 @@ function renderProjects() {
 
   if (sortDirection.name) {
     filteredProjects.sort((a, b) => sortDirection.name === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
-  } else if (sortDirection.date) {
-    filteredProjects.sort((a, b) => sortDirection.date === 'asc' ? new Date(a.modifiedDate) - new Date(b.modifiedDate) : new Date(b.modifiedDate) - new Date(a.modifiedDate));
-  }
+  } 
 
   const container = document.getElementById('projects-container');
   container.innerHTML = '';
@@ -66,52 +97,94 @@ function populateTags() {
   });
 }
 
-function toggleSearchTitles() {
-  searchTitlesOnly = !searchTitlesOnly;
-  document.getElementById('search-title-toggle').textContent = searchTitlesOnly ? 'Search Titles Only' : 'Search Titles/Summaries';
+function addFilter() {
+  const mode = document.querySelector('input[name="filter-mode"]:checked').value;
+  const type = document.getElementById('filter-type').value;
+  const value = document.getElementById('filter-value').value.toLowerCase();
+
+  filters.push({ mode, type, value });
+  renderActiveFilters();
   filterProjects();
 }
 
-function filterProjects() {
-  const searchBar = document.getElementById('search-bar');
-  const searchText = searchBar.value.toLowerCase();
-  const filteredProjects = projects.filter(project => {
-    const searchInTitle = project.name.toLowerCase().includes(searchText);
-    const searchInSummary = project.summary.toLowerCase().includes(searchText);
-    return searchTitlesOnly ? searchInTitle : searchInTitle || searchInSummary;
+function renderActiveFilters() {
+  const activeFiltersDiv = document.getElementById('active-filters');
+  activeFiltersDiv.innerHTML = ''; // Clear existing filters
+
+  filters.forEach((filter, index) => {
+    const filterDiv = document.createElement('div');
+    filterDiv.textContent = `${filter.mode.toUpperCase()}: ${filter.type} - ${filter.value}`;
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.onclick = () => {
+      filters.splice(index, 1);
+      renderActiveFilters();
+      filterProjects();
+    };
+    filterDiv.appendChild(removeButton);
+    activeFiltersDiv.appendChild(filterDiv);
   });
+}
+
+function filterProjects() {
+  let filteredProjects = projects;
+
+  filters.forEach(filter => {
+    const projectFilter = project => project[filter.type].toLowerCase().includes(filter.value);
+    filteredProjects = filteredProjects.filter(filter.mode === 'include' ? projectFilter : p => !projectFilter(p));
+  });
+
   renderProjects(filteredProjects);
 }
+
+document.getElementById('add-filter').addEventListener('click', () => {
+  const newFilter = createFilter();
+  if (!isContradictory(newFilter)) {
+    filters.push(newFilter);
+    renderActiveFilters();
+    filterProjects();
+  }
+});
 
 function createTagButton(tag) {
   const tagElement = document.createElement('button');
   tagElement.textContent = tag;
-  tagElement.classList.add('tag-button');
-  tagElement.onclick = () => toggleTag(tag, tagElement);
+  tagElement.className = 'tag-button';
+  tagElement.onclick = () => toggleTag(tag);
   return tagElement;
 }
 
-function toggleTag(tag, tagElement) {
+function toggleTag(tag) {
+  const tagIndex = activeTags.indexOf(tag);
   if (tag === 'All') {
     activeTags = [];
-    document.querySelectorAll('.tag-button').forEach(button => button.classList.remove('active-tag'));
-    tagElement.classList.add('active-tag');
   } else {
-    if (activeTags.includes(tag)) {
-      activeTags = activeTags.filter(t => t !== tag);
-      tagElement.classList.remove('active-tag');
-    } else {
-      activeTags.push(tag);
-      tagElement.classList.add('active-tag');
-      document.querySelector('.tag-button').classList.remove('active-tag'); // 'All' tag
-    }
+    tagIndex > -1 ? activeTags.splice(tagIndex, 1) : activeTags.push(tag);
   }
+  updateTagButtons();
   filterProjectsByTags();
 }
 
+function updateTagButtons() {
+  document.querySelectorAll('.tag-button').forEach(button => {
+    button.classList.toggle('active-tag', activeTags.includes(button.textContent));
+  });
+}
+
 function filterProjectsByTags() {
-  let filteredProjects = activeTags.length > 0 ? projects.filter(project => activeTags.every(tag => project.tags.includes(tag))) : projects;
+  let filteredProjects = activeTags.length ? projects.filter(project => activeTags.every(tag => project.tags.includes(tag))) : projects;
   renderProjects(filteredProjects);
+}
+
+function isContradictory(newFilter) {
+  return filters.some(filter => filter.type === newFilter.type && filter.mode !== newFilter.mode && filter.value === newFilter.value);
+}
+
+function createFilter() {
+  const mode = document.querySelector('input[name="filter-mode"]:checked').value;
+  const type = document.getElementById('filter-type').value;
+  const value = document.getElementById('filter-value').value.toLowerCase();
+  return { mode, type, value };
 }
 
 function sortProjects(criteria) {
@@ -122,9 +195,7 @@ function sortProjects(criteria) {
 
   if (criteria === 'name') {
     sortedProjects.sort((a, b) => direction === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
-  } else if (criteria === 'date') {
-    sortedProjects.sort((a, b) => direction === 'asc' ? new Date(a.modifiedDate) - new Date(b.modifiedDate) : new Date(b.modifiedDate) - new Date(a.modifiedDate));
-  }
+  } 
   renderProjects(sortedProjects);
 }
 
@@ -134,17 +205,17 @@ function updateSortIndicators(criteria, direction) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  populateTags();
-  renderProjects();
-  document.getElementById('sort-name').addEventListener('click', () => sortProjects('name'));
-  document.getElementById('sort-date').addEventListener('click', () => sortProjects('date'));
-  document.getElementById('include-mode-toggle').addEventListener('click', toggleIncludeMode);
-  document.getElementById('search-title-toggle').addEventListener('click', toggleSearchTitles);
-});
-
 function toggleIncludeMode() {
   includeMode = !includeMode;
   document.getElementById('include-mode-toggle').textContent = includeMode ? 'Inclusionary Search' : 'Exclusionary Search';
   renderProjects();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  populateTags();
+  renderProjects();
+  document.getElementById('sort-name').addEventListener('click', () => sortProjects('name'));
+  document.getElementById('include-mode-toggle').addEventListener('click', toggleIncludeMode);
+  document.getElementById('search-title-toggle').addEventListener('click', toggleSearchTitles);
+});
+

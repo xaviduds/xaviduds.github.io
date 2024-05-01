@@ -49,9 +49,18 @@ body {
 
 .search-sort-container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: start; */
+  /* margin: 1px; */
 }
 
 .tag-button.active-tag {
   background-color: #a6e3a1;
 }
+
+/* #filter-options { */
+/* Your styles here */
+/* } */
+
+/* #active-filters { */
+/* Your styles here */
+/* } */

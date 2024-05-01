@@ -14,34 +14,39 @@
   <div class="center60percent">
     <br>
     <img class="profilePic" src="https://avatars.githubusercontent.com/u/67171953" />
-    <h1>Eduardo Xavier's Tech Portfolio</h1>
+    <h1>Eduardo de Melo Xavier</h1>
 
     <p>Hi! My name is Eduardo, but you can call me Duds. I'm a 26/2 graduate in Production Engineering at PUCRS.
       I'm interested in Automation, Software/Data/Systems Engineering, Linux, AI, ML, and Operations Research. Currently
       taking ML courses and learning Rust for fun. I like manga, anime, meditation, minimalism, books, and writing files
       to boss computers around.</p>
+    <h1>Tech Portfolio</h1>
   </div>
 
   <div class="center60percent" id="filter-container">
     <div class="search-sort-container">
-      <div class="search-tags-container">
 
-        <input type="text" id="search-bar" placeholder="Search projects...">
-        <button id="search-title-toggle">Search Titles Only</button>
+      <div id="filter-options">
+        <label><input type="radio" name="filter-mode" value="include" checked> Include</label>
+        <label><input type="radio" name="filter-mode" value="exclude"> Exclude </label>
 
-        <button id="include-mode-toggle">Inclusionary Search</button>
       </div>
-      <div class="sort-buttons-container">
-        <button id="sort-name">Sort by Name <span id="name" class="sort-indicator"></span></button>
-        <button id="sort-date">Sort by Modified Date <span id="date" class="sort-indicator"></span></button>
-      </div>
+      <select id="filter-type">
+        <option value="title">Title</option>
+        <option value="summary">Summary</option>
+        <option value="tag">Tag</option>
+      </select>
+
+      <input type="text" id="filter-value" placeholder="Enter filter value...">
+      <button id="add-filter">Add Filter</button>
+
+      <button id="sort-name">Sort by Name <span id="name" class="sort-indicator"></span></button>
     </div>
 
-    <br>
-    <div id="tags-bar"></div>
-  </div>
-  <div class="center60percent" vertical-align="top" id="projects-container"></div>
+    <div id="active-filters"></div>
 
+    <div class="center60percent" vertical-align="top" id="projects-container"></div>
+  </div>
   <footer class="footer">
     <a href="https://github.com/xaviduds" class="github-icon" target="_blank" rel="noopener noreferrer"> <i
         class="fab fa-github"></i></a>
@@ -56,35 +61,6 @@
 
   </footer>
   <script type="module" src="scripts/projects_showcaser.js"></script>
-  <script>
-
-    function getRandomColor() {
-      const letters = '0123456789ABCDEF';
-      let color = '#';
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    }
-
-    function setRandomBoxShadow(element) {
-      const boxShadowColor1 = getRandomColor();
-      const boxShadowColor2 = getRandomColor();
-      const boxShadowColor3 = getRandomColor();
-
-      element.style.boxShadow = `0 0 10px ${boxShadowColor1}, 
-                             0 0 20px ${boxShadowColor2}, 
-                             0 0 30px ${boxShadowColor3}`;
-    }
-
-    // Get the .project-card element
-    const projectCard = document.querySelector('.project-card');
-
-    // Set an interval to change the box shadow every 500 milliseconds
-    setInterval(() => {
-      setRandomBoxShadow(projectCard);
-    }, 5000);
-  </script>
 </body>
 
 </html>
