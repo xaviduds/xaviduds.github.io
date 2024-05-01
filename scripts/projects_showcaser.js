@@ -51,6 +51,7 @@ let sortDirection = { name: null };
 let filters = [];
 let currentSearchText = '';
 let includeMode = true;
+let activeTags = true;
 
 function createProjectCard(project) {
   const card = document.createElement('div');
