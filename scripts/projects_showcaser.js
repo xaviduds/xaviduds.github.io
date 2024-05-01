@@ -49,6 +49,7 @@ const projects = [
 
 let sortDirection = { name: null };
 let filters = [];
+let currentSearchText = '';
 
 function createProjectCard(project) {
   const card = document.createElement('div');
