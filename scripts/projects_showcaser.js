@@ -212,7 +212,7 @@ function toggleIncludeMode() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  populateTags();
+  // populateTags();
   renderProjects();
   document.getElementById('sort-name').addEventListener('click', () => sortProjects('name'));
   document.getElementById('include-mode-toggle').addEventListener('click', toggleIncludeMode);
