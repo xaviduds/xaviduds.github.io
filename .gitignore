@@ -2,3 +2,5 @@
 !/**/
 !*.*
 .Trash-1000
+src/yabrust/*/target
+src/*/target
