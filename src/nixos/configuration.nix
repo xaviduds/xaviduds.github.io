@@ -148,13 +148,13 @@
       "cc" = "git add . && git commit -m 'commit' && git push && zl";
 
       "z" =
-        "clear && bash ~/.xaviduds/src/nixos/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
+        "clear && bash ~/.karma/src/nixos/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
       "zl" =
-        "clear && bash ~/.xaviduds/src/nixos/fetch.sh && eza -a --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
+        "clear && bash ~/.karma/src/nixos/fetch.sh && eza -a --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
       "zs" =
-        "clear && bash ~/.xaviduds/src/nixos/fetch.sh && eza -a --icons=always --group-directories-first -s size -r -I .git -lh --no-user --no-permissions --git-repos --git --no-time --total-size && s";
+        "clear && bash ~/.karma/src/nixos/fetch.sh && eza -a --icons=always --group-directories-first -s size -r -I .git -lh --no-user --no-permissions --git-repos --git --no-time --total-size && s";
       "et" = "eza -T";
-      "n" = "cd ~/.xaviduds/src/nixos && z";
+      "n" = "cd ~/.karma/src/nixos && z";
       "d" = "cd ~/Downloads && z";
       "pro" = "cd ~/projects && z";
       "v" = "cd ~/vida && z";
@@ -162,7 +162,7 @@
       "li" = "cd ~/lince && zl";
       "l" = "cd ~/lince && z";
       "i" = "cd ~/lince && zl";
-      "x" = "cd ~/.xaviduds.github.io && z";
+      "x" = "cd ~/.karma && z";
       "co" = "cd ~/.config && zl";
       "lp" = "cd ~/.personal_lince && z";
       "pl" = "cd ~/.personal_lince && z";
@@ -171,25 +171,24 @@
       "e" = "exit";
       "q" = "exit";
 
-      # "ns" = "nix-shell ~/.xaviduds/src/nixos/shells/";
       "ns" = "nix-shell";
       "np" = "nix-shell -p";
-      "nslince" = "nix-shell ~/.xaviduds/src/nixos/shells/lince.nix";
-      "nsreact" = "nix-shell ~/.xaviduds/src/nixos/shells/react.nix";
-      "nspython" = "nix-shell ~/.xaviduds/src/nixos/shells/python.nix";
-      "nsrust" = "nix-shell ~/.xaviduds/src/nixos/shells/rust.nix";
-      "nsds" = "nix-shell ~/.xaviduds/src/nixos/shells/data_science.nix";
+      "nslince" = "nix-shell ~/.karma/src/nixos/shells/lince.nix";
+      "nsreact" = "nix-shell ~/.karma/src/nixos/shells/react.nix";
+      "nspython" = "nix-shell ~/.karma/src/nixos/shells/python.nix";
+      "nsrust" = "nix-shell ~/.karma/src/nixos/shells/rust.nix";
+      "nsds" = "nix-shell ~/.karma/src/nixos/shells/data_science.nix";
       "lincedb" = "psql -U postgres -d lince";
 
       "nd" = "nix flake update && nix develop && z";
-      "u" = "sudo nix flake update ~/.xaviduds/src/nixos/";
-      "b" = "sudo nixos-rebuild switch --flake ~/.xaviduds/src/nixos#default";
+      "u" = "sudo nix flake update ~/.karma/src/nixos/";
+      "b" = "sudo nixos-rebuild switch --flake ~/.karma/src/nixos#default";
       "ncs" = "nix-collect-garbage -d && df -h";
       "bah" = "u && b && ncs";
 
       "h" = "hx";
       "linsql" = "psql -U postgres -d lince";
-      "f" = "bash ~/.xaviduds/src/nixos/fetch.sh";
+      "f" = "bash ~/.karma/src/nixos/fetch.sh";
       "zz" = "zathura ~/.personal_lince/estudando/* &";
     };
   };

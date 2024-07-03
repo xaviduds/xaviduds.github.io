@@ -19,10 +19,10 @@ in {
   home = {
     persistence."/persist/home/eduardo" = {
       directories = [
-        ".personal_lince"
-        ".nixos"
+        ".abodhi"
         "lince"
         ".xaviduds.github.io"
+        ".karma"
         ".ssh"
         # ".mozilla"
         ".local/share/zathura"
