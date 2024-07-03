@@ -48,12 +48,7 @@
   fileSystems."/persist".neededForBoot = true;
   environment.persistence."/persist/system" = {
     hideMounts = true;
-    directories = [
-      "/etc/NetworkManager/system-connections"
-      # "/var/lib/nixos"
-      # "/var/lib/systemd/coredump"
-    ];
-    # files = [ ];
+    directories = [ "/etc/NetworkManager/system-connections" ];
   };
 
   home-manager = {
