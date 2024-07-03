@@ -115,6 +115,7 @@
       eza
       feh
       firefox
+      gh
       git
       helix
       man
