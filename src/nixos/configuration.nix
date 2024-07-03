@@ -136,6 +136,7 @@
       "aa" = "git add .";
       "p" = "git push";
       "gp" = "git pull";
+      "gap" = "git add -p";
       "gd" = "git diff";
       "gpr" = "git pull --rebase";
       "a" = "git add";
@@ -150,22 +151,16 @@
       "zs" =
         "clear && bash ~/.karma/src/nixos/fetch.sh && eza -a --icons=always --group-directories-first -s size -r -I .git -lh --no-user --no-permissions --git-repos --git --no-time --total-size && s";
       "et" = "eza -T";
+      "k" = "cd ~/.karma && z";
+      "v" = "cd ~/.abodhi && z";
       "n" = "cd ~/.karma/src/nixos && z";
       "d" = "cd ~/Downloads && z";
-      "pro" = "cd ~/projects && z";
-      "v" = "cd ~/vida && z";
-      "lc" = "cd ~/lince && zl";
-      "li" = "cd ~/lince && zl";
       "l" = "cd ~/lince && z";
       "i" = "cd ~/lince && zl";
-      "x" = "cd ~/.karma && z";
       "co" = "cd ~/.config && zl";
-      "lp" = "cd ~/.personal_lince && z";
-      "pl" = "cd ~/.personal_lince && z";
       "dc" = "cd ~/ && z";
       ".." = "cd ..";
       "e" = "exit";
-      "q" = "exit";
 
       "ns" = "nix-shell";
       "np" = "nix-shell -p";
@@ -185,7 +180,22 @@
       "h" = "hx";
       "linsql" = "psql -U postgres -d lince";
       "f" = "bash ~/.karma/src/nixos/fetch.sh";
-      "zz" = "zathura ~/.personal_lince/estudando/* &";
+      "zz" = "zathura ~/.abodhi/estudando/* &";
+
+      "va" = "wpctl set-volume @DEFAULT_AUDIO_SINK@";
+      "vu" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
+      "vd" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
+      "vt" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+      "v0" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0";
+
+      "ma" = "wpctl set-volume @DEFAULT_SOURCE@";
+      "mu" = "wpctl set-volume @DEFAULT_SOURCE@ 0.01+";
+      "md" = "wpctl set-volume @DEFAULT_SOURCE@ 0.01-";
+      "mt" = "wpctl set-mute @DEFAULT_SOURCE@ toggle";
+      "m0" = "wpctl set-volume @DEFAULT_SOURCE@ 0";
+
+      "bu" = "brightnessctl s +5%";
+      "bd" = "brightnessctl s 5%-";
     };
   };
 
