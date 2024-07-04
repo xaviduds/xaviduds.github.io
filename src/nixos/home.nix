@@ -32,10 +32,8 @@ in {
     enable = true;
     settings = {
       monitor = ",highres,auto,1";
-      exec-once = [
-        "bash ~/.karma/src/nixos/scripts/work.sh"
-        "sleep 5 && wpctl set-volume @DEFAULT_SOURCE@ 0.1"
-      ];
+      exec-once =
+        [ "linceestudando" "sleep 5 && wpctl set-volume @DEFAULT_SOURCE@ 0.1" ];
       input = {
         kb_layout = "br";
         kb_variant = "abnt2";

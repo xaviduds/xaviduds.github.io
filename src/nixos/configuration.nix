@@ -173,13 +173,13 @@
       "cc" = "git add . && git commit -m 'commit' && git push && zl";
 
       "za" =
-        "clear && bash ~/.karma/src/nixos/scripts/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time -a && s";
+        "clear && bash ~/.karma/scripts/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time -a && s";
       "z" =
-        "clear && bash ~/.karma/src/nixos/scripts/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
+        "clear && bash ~/.karma/scripts/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
       "zl" =
-        "clear && bash ~/.karma/src/nixos/scripts/fetch.sh && eza -a --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
+        "clear && bash ~/.karma/scripts/fetch.sh && eza -a --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
       "zs" =
-        "clear && bash ~/.karma/src/nixos/scripts/fetch.sh && eza -a --icons=always --group-directories-first -s size -r -I .git -lh --no-user --no-permissions --git-repos --git --no-time --total-size && s";
+        "clear && bash ~/.karma/scripts/fetch.sh && eza -a --icons=always --group-directories-first -s size -r -I .git -lh --no-user --no-permissions --git-repos --git --no-time --total-size && s";
       "et" = "eza -T";
       "k" = "cd ~/.karma && z";
       "v" = "cd ~/.abodhi && z";
@@ -189,16 +189,18 @@
       "i" = "cd ~/lince && zl";
       "co" = "cd ~/.config && zl";
       "dc" = "cd ~/ && z";
+      "ksrc" = "cd ~/.karma/src && zl";
+      "lsrc" = "cd ~/lince/src && z";
       ".." = "cd ..";
       "e" = "exit";
 
       "ns" = "nix-shell";
       "np" = "nix-shell -p";
       "nslince" = "nix-shell ~/lince/shell.nix";
-      "nsreact" = "nix-shell ~/.karma/src/nixos/shells/react.nix";
-      "nspython" = "nix-shell ~/.karma/src/nixos/shells/python.nix";
-      "nsrust" = "nix-shell ~/.karma/src/nixos/shells/rust.nix";
-      "nsds" = "nix-shell ~/.karma/src/nixos/shells/data_science.nix";
+      "nsreact" = "nix-shell ~/.karma/samadhi/react.nix";
+      "nspython" = "nix-shell ~/.karma/samadhi/python.nix";
+      "nsrust" = "nix-shell ~/.karma/samadhi/rust.nix";
+      "nsds" = "nix-shell ~/.karma/samadhi/data_science.nix";
       "lincedb" = "psql -U postgres -d lince";
 
       "nd" = "nix flake update && nix develop && z";
@@ -214,6 +216,7 @@
       "zz" = "zathura ~/.abodhi/estudando/* &";
       "ht" = "hx ~/.abodhi/teoria.md";
       "looplince" = "while true; do python ~/lince/src/lince.py; sleep 1; done";
+      "linceestudando" = "bash ~/.karma/scripts/linceestudando.sh";
 
       "va" = "wpctl set-volume @DEFAULT_AUDIO_SINK@";
       "vu" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
