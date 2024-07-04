@@ -60,8 +60,6 @@
     fuse.userAllowOther = true;
     hyprland.enable = true;
     dconf.enable = true;
-    light.enable = true;
-
     git = {
       enable = true;
       config = {
@@ -128,15 +126,45 @@
       tmux
       vscode-langservers-extracted
       zathura
+
+      mpv
+      yt-dlp
     ];
     shellAliases = {
+      ##############################################
+      # Inspired by https://github.com/oliveski/lofi
+
+      "lofi" = # lofi hip hop radio 📚 - beats to relax/study to
+        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/jfKfPfyJRdk' 2> /dev/null | mpv --no-video - 2> /dev/null";
+
+      "lofisynth" = # synthwave radio 🌌 - beats to chill/game to
+        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/4xDzrJKXOOY' 2> /dev/null | mpv --no-video - 2> /dev/null";
+
+      "lofisleep" = # lofi hip hop radio 💤 - beats to sleep/chill to
+        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/rUxyKA_-grg' 2> /dev/null | mpv --no-video - 2> /dev/null";
+
+      "lofidark" = # dark ambient radio 🌃 - music to escape/dream to
+        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/S_MOd40zlYU' 2> /dev/null | mpv --no-video - 2> /dev/null";
+
+      "lofipiano" = # peaceful piano radio 🎹 - music to focus/study to
+        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/4oStw0r33so' 2> /dev/null | mpv --no-video - 2> /dev/null";
+
+      "lofiorientalized" = # asian lofi radio ⛩️ - beats to relax/study to
+        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/Na0w3Mz46GA' 2> /dev/null | mpv --no-video - 2> /dev/null";
+
+      "lofimedieval" = # medieval lofi radio 🏰 - beats to scribe manuscripts to
+        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/_uMuuHk_KkQ' 2> /dev/null | mpv --no-video - 2> /dev/null";
+
+      ##############################################
+
       "sshgithub" =
         "ssh-keygen -t ed25519 -C 'xaviduds@gmail.com' && eval '$(ssh-agent -s)' && ssh-add ~/.ssh/id_ed25519 && cat ~/.ssh/id_ed25519.pub";
       "s" = "if [ -d .git ]; then git status; fi";
       "aa" = "git add .";
       "p" = "git push";
       "gp" = "git pull";
-      "gap" = "git add -p";
+      "ap" = "git add -p";
+      "ai" = "git add -i";
       "gd" = "git diff";
       "gpr" = "git pull --rebase";
       "a" = "git add";
@@ -144,12 +172,14 @@
       "m" = "git commit -m";
       "cc" = "git add . && git commit -m 'commit' && git push && zl";
 
+      "za" =
+        "clear && bash ~/.karma/src/nixos/scripts/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time -a && s";
       "z" =
-        "clear && bash ~/.karma/src/nixos/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
+        "clear && bash ~/.karma/src/nixos/scripts/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
       "zl" =
-        "clear && bash ~/.karma/src/nixos/fetch.sh && eza -a --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
+        "clear && bash ~/.karma/src/nixos/scripts/fetch.sh && eza -a --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
       "zs" =
-        "clear && bash ~/.karma/src/nixos/fetch.sh && eza -a --icons=always --group-directories-first -s size -r -I .git -lh --no-user --no-permissions --git-repos --git --no-time --total-size && s";
+        "clear && bash ~/.karma/src/nixos/scripts/fetch.sh && eza -a --icons=always --group-directories-first -s size -r -I .git -lh --no-user --no-permissions --git-repos --git --no-time --total-size && s";
       "et" = "eza -T";
       "k" = "cd ~/.karma && z";
       "v" = "cd ~/.abodhi && z";
@@ -164,7 +194,7 @@
 
       "ns" = "nix-shell";
       "np" = "nix-shell -p";
-      "nslince" = "nix-shell ~/.karma/src/nixos/shells/lince.nix";
+      "nslince" = "nix-shell ~/lince/shell.nix";
       "nsreact" = "nix-shell ~/.karma/src/nixos/shells/react.nix";
       "nspython" = "nix-shell ~/.karma/src/nixos/shells/python.nix";
       "nsrust" = "nix-shell ~/.karma/src/nixos/shells/rust.nix";
@@ -179,8 +209,11 @@
 
       "h" = "hx";
       "linsql" = "psql -U postgres -d lince";
+      "hl" = "hx ~/lince/src/app/lince.py";
       "f" = "bash ~/.karma/src/nixos/fetch.sh";
       "zz" = "zathura ~/.abodhi/estudando/* &";
+      "ht" = "hx ~/.abodhi/teoria.md";
+      "looplince" = "while true; do python ~/lince/src/lince.py; sleep 1; done";
 
       "va" = "wpctl set-volume @DEFAULT_AUDIO_SINK@";
       "vu" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+";

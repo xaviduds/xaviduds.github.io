@@ -18,15 +18,8 @@ in {
   imports = [ inputs.impermanence.nixosModules.home-manager.impermanence ];
   home = {
     persistence."/persist/home/eduardo" = {
-      directories = [
-        ".abodhi"
-        "lince"
-        ".xaviduds.github.io"
-        ".karma"
-        ".ssh"
-        # ".mozilla"
-        ".local/share/zathura"
-      ];
+      directories =
+        [ ".abodhi" "lince" ".karma" ".ssh" ".local/share/zathura" ];
       allowOther = true;
     };
     username = "eduardo";
@@ -40,9 +33,7 @@ in {
     settings = {
       monitor = ",highres,auto,1";
       exec-once = [
-        "firefox"
-        "alacritty"
-        "zathura ~/.personal_lince/estudando/*"
+        "bash ~/.karma/src/nixos/scripts/work.sh"
         "sleep 5 && wpctl set-volume @DEFAULT_SOURCE@ 0.1"
       ];
       input = {
@@ -63,7 +54,7 @@ in {
         "SUPER, P, exec, pavucontrol"
         "SUPER, F, exec, firefox"
         "SUPER, T, exec, xterm -e nmtui"
-        "SUPER, Z, exec, zathura ~/.personal_lince/estudando/*"
+        "SUPER, Z, exec, zathura ~/.abodhi/estudando/*"
         "SUPER, C, killactive"
         "SUPER, M, exit"
         "SUPER, h, movefocus, l"
@@ -100,6 +91,7 @@ in {
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         "SUPER,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_SOURCE@ 0.01+"
         "SUPER,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SOURCE@ 0.01-"
+        "SUPER, XF86AudioMute, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle"
         ", XF86MonBrightnessUp, exec, brightnessctl s +5%"
         ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"
       ];
@@ -165,9 +157,7 @@ in {
         clear
         tmux
         clear
-        bash ~/.nixos/fetch.sh
-        cd ~/lince
-        z
+        l
       '';
     };
 
