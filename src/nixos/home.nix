@@ -19,12 +19,12 @@ in {
   home = {
     persistence."/persist/home/eduardo" = {
       directories =
-        [ ".abodhi" "lince" ".karma" ".ssh" ".local/share/zathura" ];
+        [ ".charya" "lince" ".karma" ".ssh" ".local/share/zathura" ];
       allowOther = true;
     };
     username = "eduardo";
     homeDirectory = "/home/eduardo";
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     sessionVariables = { EDITOR = "hx"; };
   };
 
@@ -33,7 +33,7 @@ in {
     settings = {
       monitor = ",highres,auto,1";
       exec-once =
-        [ "linceestudando" "sleep 5 && wpctl set-volume @DEFAULT_SOURCE@ 0.1" ];
+        [ "alacritty" "sleep 5 && wpctl set-volume @DEFAULT_SOURCE@ 0.1" ];
       input = {
         kb_layout = "br";
         kb_variant = "abnt2";
@@ -49,20 +49,24 @@ in {
       misc = { disable_hyprland_logo = "true"; };
       bind = [
         "SUPER, Q, exec, alacritty"
-        "SUPER, P, exec, pavucontrol"
-        "SUPER, F, exec, firefox"
         "SUPER, T, exec, xterm -e nmtui"
-        "SUPER, Z, exec, zathura ~/.abodhi/estudando/*"
+        "SUPER SHIFT, E, exec, bash ~/.karma/scripts/sessions/estudo.sh"
+        "SUPER SHIFT, D, exec, bash ~/.karma/scripts/sessions/lince.sh"
+        "SUPER SHIFT, P, exec, bash ~/.karma/scripts/sessions/portfolio.sh"
         "SUPER, C, killactive"
         "SUPER, M, exit"
         "SUPER, h, movefocus, l"
         "SUPER, l, movefocus, r"
         "SUPER, k, movefocus, u"
         "SUPER, j, movefocus, d"
-        "SUPER SHIFT, l, resizeactive, 50 0"
-        "SUPER SHIFT, h, resizeactive, -50 0"
-        "SUPER SHIFT, k, resizeactive, 0 -50"
-        "SUPER SHIFT, j, resizeactive, 0 50"
+        "CTRL, H, movewindow, l"
+        "CTRL, L, movewindow, r"
+        "CTRL, K, movewindow, u"
+        "CTRL, J, movewindow, d"
+        "SHIFT, l, resizeactive, 50 0"
+        "SHIFT, h, resizeactive, -50 0"
+        "SHIFT, k, resizeactive, 0 -50"
+        "SHIFT, j, resizeactive, 0 50"
         "SUPER, 1, workspace, 1"
         "SUPER, 2, workspace, 2"
         "SUPER, 3, workspace, 3"
@@ -151,11 +155,7 @@ in {
     bash = {
       enable = true;
       initExtra = ''
-        tmux attach
-        clear
-        tmux
-        clear
-        l
+        tmux_session_checker
       '';
     };
 

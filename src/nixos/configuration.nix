@@ -131,77 +131,86 @@
       yt-dlp
     ];
     shellAliases = {
-      ##############################################
-      # Inspired by https://github.com/oliveski/lofi
+      # BACKGROUND MUSIC. Inspired by https://github.com/oliveski/lofi
 
       "lofi" = # lofi hip hop radio 📚 - beats to relax/study to
         "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/jfKfPfyJRdk' 2> /dev/null | mpv --no-video - 2> /dev/null";
 
-      "lofisynth" = # synthwave radio 🌌 - beats to chill/game to
+      "lofi_synth" = # synthwave radio 🌌 - beats to chill/game to
         "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/4xDzrJKXOOY' 2> /dev/null | mpv --no-video - 2> /dev/null";
 
-      "lofisleep" = # lofi hip hop radio 💤 - beats to sleep/chill to
+      "lofi_sleep" = # lofi hip hop radio 💤 - beats to sleep/chill to
         "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/rUxyKA_-grg' 2> /dev/null | mpv --no-video - 2> /dev/null";
 
-      "lofidark" = # dark ambient radio 🌃 - music to escape/dream to
+      "lofi_dark" = # dark ambient radio 🌃 - music to escape/dream to
         "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/S_MOd40zlYU' 2> /dev/null | mpv --no-video - 2> /dev/null";
 
-      "lofipiano" = # peaceful piano radio 🎹 - music to focus/study to
+      "lofi_piano" = # peaceful piano radio 🎹 - music to focus/study to
         "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/4oStw0r33so' 2> /dev/null | mpv --no-video - 2> /dev/null";
 
-      "lofiorientalized" = # asian lofi radio ⛩️ - beats to relax/study to
+      "lofi_orientalized" = # asian lofi radio ⛩️ - beats to relax/study to
         "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/Na0w3Mz46GA' 2> /dev/null | mpv --no-video - 2> /dev/null";
 
-      "lofimedieval" = # medieval lofi radio 🏰 - beats to scribe manuscripts to
+      "lofi_medieval" = # medieval lofi radio 🏰 - beats to scribe manuscripts to
         "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/_uMuuHk_KkQ' 2> /dev/null | mpv --no-video - 2> /dev/null";
 
-      ##############################################
-
+      # GIT
       "sshgithub" =
         "ssh-keygen -t ed25519 -C 'xaviduds@gmail.com' && eval '$(ssh-agent -s)' && ssh-add ~/.ssh/id_ed25519 && cat ~/.ssh/id_ed25519.pub";
+
       "s" = "if [ -d .git ]; then git status; fi";
+
+      "gd" = "git diff";
+
+      "a" = "git add";
       "aa" = "git add .";
-      "p" = "git push";
-      "gp" = "git pull";
       "ap" = "git add -p";
       "ai" = "git add -i";
-      "gd" = "git diff";
-      "gpr" = "git pull --rebase";
-      "a" = "git add";
+
       "c" = "git commit";
       "m" = "git commit -m";
-      "cc" = "git add . && git commit -m 'commit' && git push && zl";
 
-      "za" =
-        "clear && bash ~/.karma/scripts/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time -a && s";
+      "gp" = "git pull";
+      "gpr" = "git pull --rebase";
+
+      "p" = "git push";
+
+      "cc" = "aa && m 'commit' && p && zl";
+
+      # MOVING AROUND, FINDING OUT
       "z" =
-        "clear && bash ~/.karma/scripts/fetch.sh && eza -T -L 2 --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
-      "zl" =
-        "clear && bash ~/.karma/scripts/fetch.sh && eza -a --icons=always --group-directories-first -s name -I .git -lh --no-user --no-permissions --git-repos --git --no-time && s";
+        "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s name -a -T -L 2         && s";
+      "za" =
+        "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s name -a                 && s";
+      "zt" =
+        "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s name -T -L 2            && s";
       "zs" =
-        "clear && bash ~/.karma/scripts/fetch.sh && eza -a --icons=always --group-directories-first -s size -r -I .git -lh --no-user --no-permissions --git-repos --git --no-time --total-size && s";
+        "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s size -r -a --total-size && s";
+
       "et" = "eza -T";
+
       "k" = "cd ~/.karma && z";
-      "v" = "cd ~/.abodhi && z";
+      "ks" = "cd ~/.karma/scripts && z";
+      "v" = "cd ~/.charya && z";
       "n" = "cd ~/.karma/src/nixos && z";
       "d" = "cd ~/Downloads && z";
       "l" = "cd ~/lince && z";
-      "i" = "cd ~/lince && zl";
       "co" = "cd ~/.config && zl";
       "dc" = "cd ~/ && z";
       "ksrc" = "cd ~/.karma/src && zl";
       "lsrc" = "cd ~/lince/src && z";
+
       ".." = "cd ..";
       "e" = "exit";
 
+      # NIX
       "ns" = "nix-shell";
       "np" = "nix-shell -p";
-      "nslince" = "nix-shell ~/lince/shell.nix";
+      "nslince" = "nix-shell ~/lince/default.nix";
       "nsreact" = "nix-shell ~/.karma/samadhi/react.nix";
       "nspython" = "nix-shell ~/.karma/samadhi/python.nix";
       "nsrust" = "nix-shell ~/.karma/samadhi/rust.nix";
       "nsds" = "nix-shell ~/.karma/samadhi/data_science.nix";
-      "lincedb" = "psql -U postgres -d lince";
 
       "nd" = "nix flake update && nix develop && z";
       "u" = "sudo nix flake update ~/.karma/src/nixos/";
@@ -209,14 +218,32 @@
       "ncs" = "nix-collect-garbage -d && df -h";
       "bah" = "u && b && ncs";
 
+      # STUDY
+      "zz" = "zathura ~/.charya/estudando/* &";
+      "ht" = "hx ~/.charya/teoria.md";
+
+      # TMUX
+      "tmux_session_checker" = "bash ~/.karma/scripts/sessions/tmux_checker.sh";
+      "22" =
+        "tmux split-window -h \\; split-window -v \\; select-pane -L \\; split-window -v \\; select-pane -U && clear";
+      "12" =
+        "tmux split-window -v \\; split-window -h \\; select-pane -L \\; select-pane -U && clear";
+
+      # DEV
+      "me" = "bash ~/.karma/scripts/sessions/estudo.sh";
+      "ml" = "bash ~/.karma/scripts/sessions/lince.sh";
+      "mp" = "bash ~/.karma/scripts/sessions/portfolio.sh";
+
+      "f" = "firefox &";
       "h" = "hx";
+
       "linsql" = "psql -U postgres -d lince";
-      "hl" = "hx ~/lince/src/app/lince.py";
-      "f" = "bash ~/.karma/src/nixos/fetch.sh";
-      "zz" = "zathura ~/.abodhi/estudando/* &";
-      "ht" = "hx ~/.abodhi/teoria.md";
-      "looplince" = "while true; do python ~/lince/src/lince.py; sleep 1; done";
-      "linceestudando" = "bash ~/.karma/scripts/linceestudando.sh";
+
+      "lincetest" =
+        "while true; do python ~/lince/src/app/lince.py; sleep 1; done";
+
+      # SYSTEM CONTROL
+      "i" = "bash ~/.karma/scripts/fetch.sh";
 
       "va" = "wpctl set-volume @DEFAULT_AUDIO_SINK@";
       "vu" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
@@ -312,7 +339,7 @@
       dates = "22:11";
       randomizedDelaySec = "45min";
     };
-    stateVersion = "23.11";
+    stateVersion = "24.05";
   };
 }
 

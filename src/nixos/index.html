@@ -16,12 +16,12 @@
     <a href="../../index.html" class="home-icon" rel="noopener noreferrer">
       <i class="fa fa-home" aria-hidden="true"> Home</i>
     </a>
-    <img class="profilePic" src="logo.png">
+    <img class="profilePic" src="../../img/logo.png">
 
     <h3>My NixOS configuration - <a href="https://github.com/xaviduds/.nixos">GitHub</a></h3>
-    <img width="100%" src="desktop.png">
+    <img width="100%" src="../../img/desktop.png">
 
-    <h2>Nix Basics</h2>
+    <h2>Installation</h2>
     <p>
       # My NixOS Setup Process:
       For a NixOS explanation, go to something I <a href="https://xaviduds.github.io/src/nixos">wrote</a>.
@@ -90,7 +90,9 @@
       ```
       After that the finishing touches are:
       1. Enabling the installed firefox extensions, loggin in GitHub, Whastsapp Web e Gmail.</p>
-    <p>NixOS is a <a href="https://www.linux.org/threads/what-is-linux.4106/">Linux</a> distribution that uses Nix, the
+    <h2>Nix Basics</h2>
+    <p>NixOS is a <a href="https://www.linux.org/threads/what-is-linux.4106/">Linux</a> distribution that uses Nix,
+      the
       purely functional programming language, package manager and environment maker, to configure the
       system in a declarative
       way. To install NixOS you can follow the instructions at the official <a
@@ -100,7 +102,8 @@
 
     <p>With nixos, all your system configuration can be completely replicated with one or a few commmands. If you have
       an install script, the partitioning and configuration is merely a download of your config and an activation of
-      your modules. To update and build the system, you'll need your config and one command. Rolling back to a previous
+      your modules. To update and build the system, you'll need your config and one command. Rolling back to a
+      previous
       generation can be done at boot. Keeping a limited number of them to not clutter the disk is also possibe.</p>
 
     <p>My setup uses flakes with disko, impermanence (persistance too) and home-manager; it configures my channel to
@@ -116,7 +119,8 @@
       standard way to write Nix expressions (and therefore
       packages) whose dependencies are version-pinned in a lock file, improving reproducibility of Nix
       installations."</i>
-    <p>Just like every snowflake is unique, so aren't nix flakes if you dont wan't them to be. They can be an exact copy
+    <p>Just like every snowflake is unique, so aren't nix flakes if you dont wan't them to be. They can be an exact
+      copy
       of another person's flake.</p>
 
     <h3><a href="https://nixos.wiki/wiki/Disko">Disko</a></h3>
@@ -133,9 +137,11 @@
       Impermanence. Imagine that your floor is lava between reboots, anything that is not the explicitly declared
       directories or files, coated with anti-lava gel, is burned.</p>
 
-    <p>That is usefull when you want to have a system that never bloats. You always use te minimum amount of space, you
+    <p>That is usefull when you want to have a system that never bloats. You always use te minimum amount of space,
+      you
       know everything that your computer keeps in it's storage. There aren't random/unneeded files and packages lying
-      around. You can install eveything your disk allows, test every package you want, and reboot to a fresh start.</p>
+      around. You can install eveything your disk allows, test every package you want, and reboot to a fresh start.
+    </p>
 
     <h3><a href="https://nixos.wiki/wiki/Home_Manager">Home Manager</a></h3>
     <i>"Home Manager is a system for managing a user environment using the Nix package manager."</i>
@@ -144,14 +150,17 @@
       configurations in a single file; be it colors on the terminal, starship icons, editor preferences, waybar,
       hyprland... and any directory or file in a symlink or explicit way inside home.nix.</p>
 
-    <p>If you search through the home.nix below, I believe you will find one or more programs/types of programs that you
+    <p>If you search through the home.nix below, I believe you will find one or more programs/types of programs that
+      you
       use daily.</p>
     <h3>Conclusion</h3>
-    <p>NixOS is a powerfull tool, it lets you have from a minimal xfce experience to a highly configured and featureful
+    <p>NixOS is a powerfull tool, it lets you have from a minimal xfce experience to a highly configured and
+      featureful
       one.</p>
 
     <p>After a lot tweaking, a few generations of the NixOS config later, changing 100 lines here, one line
-      there, a stable, reproducible system, with the biggest number of packages and fresh packages available is created.
+      there, a stable, reproducible system, with the biggest number of packages and fresh packages available is
+      created.
     </p>
 
     <h3>Scripts</h3>

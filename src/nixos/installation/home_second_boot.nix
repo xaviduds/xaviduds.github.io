@@ -36,7 +36,7 @@ in {
     };
     username = "eduardo";
     homeDirectory = "/home/eduardo";
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     sessionVariables = { EDITOR = "hx"; };
     file = {
       ".config/rofi/xaviduds.rasi".text = ''
