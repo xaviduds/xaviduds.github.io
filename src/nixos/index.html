@@ -43,18 +43,15 @@
         /tmp/home.nix</p>
       <br>
 
-      <p>sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/disko.nix --arg device '"/dev/nvme0n1"'</p>
+      <p>sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko
+        /tmp/disko.nix --arg device '"/dev/nvme0n1"'</p>
       <p>sudo nixos-generate-config --no-filesystems --root /mnt</p>
       <p>sudo mv /tmp/*.nix /mnt/etc/nixos/</p>
       <p>sudo nixos-install --root /mnt --flake /mnt/etc/nixos#default && reboot</p>
-      <br>
-      
-      <p>sudo nixos-install --root /mnt --flake /mnt/persist/nixos#default && reboot</p>
-      <p>sudo mv /tmp/*.nix /mnt/etc/nixos/ && sudo mv /mnt/etc/nixos /mnt/persist</p>
     </code>
     <h3>Configure</h3>
     <code>
-      <p>xterm -e nmtui # Wifi</p>
+      <p>wifi</p>
       <p>ssh-keygen -t ed25519 -C 'xaviduds@gmail.com' && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519 && cat
         ~/.ssh/id_ed25519.pub</p>
       <p>git clone git@github.com:lince-social/lince.git ~/lince</p>
