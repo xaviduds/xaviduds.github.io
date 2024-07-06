@@ -176,7 +176,7 @@
       # NIX
       "ns" = "nix-shell";
       "np" = "nix-shell -p";
-      "npf" = "nix-shell -p firefox";
+      "ff" = "nix-shell -p firefox";
       "nslince" = "nix-shell ~/lince/default.nix";
       "nsreact" = "nix-shell ~/.karma/samadhi/react.nix";
       "nspython" = "nix-shell ~/.karma/samadhi/python.nix";
@@ -214,6 +214,7 @@
         "while true; do python ~/lince/src/app/lince.py; sleep 1; done";
 
       # SYSTEM CONTROL
+      "wifi" = "xterm -e nmtui";
       "i" = "bash ~/.karma/scripts/fetch.sh";
 
       "va" = "wpctl set-volume @DEFAULT_AUDIO_SINK@";

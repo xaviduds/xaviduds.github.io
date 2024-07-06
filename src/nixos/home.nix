@@ -47,7 +47,6 @@ in {
       misc = { disable_hyprland_logo = "true"; };
       bind = [
         "SUPER, Q, exec, alacritty"
-        "SUPER, T, exec, xterm -e nmtui"
         "SUPER SHIFT, E, exec, bash ~/.karma/scripts/sessions/estudo.sh"
         "SUPER SHIFT, D, exec, bash ~/.karma/scripts/sessions/lince.sh"
         "SUPER SHIFT, P, exec, bash ~/.karma/scripts/sessions/portfolio.sh"
