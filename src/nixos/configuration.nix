@@ -109,51 +109,21 @@
   environment = {
     systemPackages = with pkgs; [
       alacritty
-      brightnessctl
       eza
-      feh
-      firefox
-      gh
       git
       helix
-      man
+      tmux
+      zathura
+
       nil
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
       python311Packages.python-lsp-server
       rust-analyzer
       rustfmt
-      tmux
       vscode-langservers-extracted
-      zathura
-
-      mpv
-      yt-dlp
     ];
     shellAliases = {
-      # BACKGROUND MUSIC. Inspired by https://github.com/oliveski/lofi
-
-      "lofi" = # lofi hip hop radio 📚 - beats to relax/study to
-        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/jfKfPfyJRdk' 2> /dev/null | mpv --no-video - 2> /dev/null";
-
-      "lofi_synth" = # synthwave radio 🌌 - beats to chill/game to
-        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/4xDzrJKXOOY' 2> /dev/null | mpv --no-video - 2> /dev/null";
-
-      "lofi_sleep" = # lofi hip hop radio 💤 - beats to sleep/chill to
-        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/rUxyKA_-grg' 2> /dev/null | mpv --no-video - 2> /dev/null";
-
-      "lofi_dark" = # dark ambient radio 🌃 - music to escape/dream to
-        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/S_MOd40zlYU' 2> /dev/null | mpv --no-video - 2> /dev/null";
-
-      "lofi_piano" = # peaceful piano radio 🎹 - music to focus/study to
-        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/4oStw0r33so' 2> /dev/null | mpv --no-video - 2> /dev/null";
-
-      "lofi_orientalized" = # asian lofi radio ⛩️ - beats to relax/study to
-        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/Na0w3Mz46GA' 2> /dev/null | mpv --no-video - 2> /dev/null";
-
-      "lofi_medieval" = # medieval lofi radio 🏰 - beats to scribe manuscripts to
-        "yt-dlp --buffer-size 1024 -f 91 -o - 'https://www.youtube.com/live/_uMuuHk_KkQ' 2> /dev/null | mpv --no-video - 2> /dev/null";
-
       # GIT
       "sshgithub" =
         "ssh-keygen -t ed25519 -C 'xaviduds@gmail.com' && eval '$(ssh-agent -s)' && ssh-add ~/.ssh/id_ed25519 && cat ~/.ssh/id_ed25519.pub";
@@ -182,22 +152,22 @@
         "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s name -a -T -L 2         && s";
       "za" =
         "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s name -a                 && s";
-      "zt" =
+      "t" =
         "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s name -T -L 2            && s";
       "zs" =
         "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s size -r -a --total-size && s";
 
       "et" = "eza -T";
 
-      "k" = "cd ~/.karma && z";
+      "k" = "cd ~/.karma && za";
       "ks" = "cd ~/.karma/scripts && z";
       "v" = "cd ~/.charya && z";
       "n" = "cd ~/.karma/src/nixos && z";
       "d" = "cd ~/Downloads && z";
       "l" = "cd ~/lince && z";
-      "co" = "cd ~/.config && zl";
-      "dc" = "cd ~/ && z";
-      "ksrc" = "cd ~/.karma/src && zl";
+      "co" = "cd ~/.config && za";
+      "dc" = "cd ~/ && za";
+      "ksrc" = "cd ~/.karma/src && za";
       "lsrc" = "cd ~/lince/src && z";
 
       ".." = "cd ..";
@@ -206,6 +176,7 @@
       # NIX
       "ns" = "nix-shell";
       "np" = "nix-shell -p";
+      "npf" = "nix-shell -p firefox";
       "nslince" = "nix-shell ~/lince/default.nix";
       "nsreact" = "nix-shell ~/.karma/samadhi/react.nix";
       "nspython" = "nix-shell ~/.karma/samadhi/python.nix";
@@ -272,6 +243,7 @@
         				host all       all     ::1/128        trust		
         				'';
     };
+
     xserver = {
       enable = true;
       displayManager = {
@@ -290,7 +262,9 @@
     };
 
     thermald.enable = true;
+
     power-profiles-daemon.enable = false;
+
     auto-cpufreq = {
       enable = true;
       settings = {
@@ -304,6 +278,7 @@
         };
       };
     };
+
   };
 
   systemd.tmpfiles.rules = [
