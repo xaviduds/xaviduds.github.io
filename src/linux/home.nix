@@ -1,5 +1,23 @@
 { pkgs, inputs, ... }:
 
+# [window]
+# padding = { x = 0, y = 0 }
+# decorations = "none"
+
+# [font]
+# normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+# bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+# italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+# bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+
+# [colors]
+# foreground = "#ffffff"
+# background = "#000000"
+
+# primary = { background = "#000000", foreground = "#ffffff" }
+# normal = { background = "#000000", foreground = "#ffffff" }
+# bright = { background = "#000000", foreground = "#ffffff" }
+# dim = { background = "#000000", foreground = "#ffffff" }
 let
   black = "000000";
   white = "ffffff";
@@ -21,10 +39,15 @@ in {
         [ ".charya" "lince" ".karma" ".ssh" ".local/share/zathura" ];
       allowOther = true;
     };
+    file = {
+      ".config/zathura/zathurarc".source =
+        /home/eduardo/.karma/src/linux/zathura/zathurarc;
+      ".config/alacritty/alacritty.toml".source =
+        /home/eduardo/.karma/src/linux/alacritty/alacritty.toml;
+    };
     username = "eduardo";
     homeDirectory = "/home/eduardo";
     stateVersion = "24.05";
-    sessionVariables = { EDITOR = "hx"; };
   };
 
   wayland.windowManager.hyprland = {
@@ -47,9 +70,6 @@ in {
       misc = { disable_hyprland_logo = "true"; };
       bind = [
         "SUPER, Q, exec, alacritty"
-        "SUPER SHIFT, E, exec, bash ~/.karma/scripts/sessions/estudo.sh"
-        "SUPER SHIFT, D, exec, bash ~/.karma/scripts/sessions/lince.sh"
-        "SUPER SHIFT, P, exec, bash ~/.karma/scripts/sessions/portfolio.sh"
         "SUPER, C, killactive"
         "SUPER, M, exit"
         "SUPER, h, movefocus, l"
@@ -84,61 +104,11 @@ in {
         "SUPER SHIFT, 8, movetoworkspace, 8"
         "SUPER SHIFT, 9, movetoworkspace, 9"
         "SUPER SHIFT, 0, movetoworkspace, 10"
-        "SUPER, Print, exec, gscreenshot --selection"
-        ", XF86AudioRaiseVolume,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"
-        ", XF86AudioLowerVolume,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        "SUPER,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_SOURCE@ 0.01+"
-        "SUPER,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SOURCE@ 0.01-"
-        "SUPER, XF86AudioMute, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle"
-        ", XF86MonBrightnessUp, exec, brightnessctl s +5%"
-        ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"
       ];
     };
   };
   programs = {
     home-manager.enable = true;
-
-    alacritty = {
-      enable = true;
-      settings = {
-        window = {
-          padding = {
-            x = 0;
-            y = 0;
-          };
-          decorations = "none";
-        };
-        font = {
-          normal = {
-            family = "JetBrainsMono Nerd Font";
-            style = "Regular";
-          };
-          bold = {
-            family = "JetBrainsMono Nerd Font";
-            style = "Bold";
-          };
-          italic = {
-            family = "JetBrainsMono Nerd Font";
-            style = "Italic";
-          };
-          bold_italic = {
-            family = "JetBrainsMono Nerd Font";
-            style = "Bold Italic";
-          };
-        };
-        colors = {
-          primary = {
-            background = "0x${black}";
-            foreground = "0x${white}";
-          };
-          normal = colorPalette;
-          bright = colorPalette;
-          dim = colorPalette;
-        };
-      };
-    };
-
     bash = {
       enable = true;
       initExtra = ''
@@ -214,12 +184,12 @@ in {
         set -g status off
       '';
     };
-    zathura = {
-      enable = true;
-      options = {
-        adjust-open = "width";
-        guioptions = "none";
-      };
-    };
+    # zathura = {
+    #   enable = true;
+    #   options = {
+    #     adjust-open = "width";
+    #     guioptions = "none";
+    #   };
+    # };
   };
 }

@@ -13,4 +13,4 @@ printf "%s %s %s %s %s %s\n" \
 "$( [ "$volume_state" == "MUTED" ] && printf "%s%s%s\n" " " "$volume_percentage" "%"|| printf "%s%s%s\n" "  " "$volume_percentage" "%")" \
 "$( [ "$microphone_state" == "MUTED" ] && printf "%s%s%s\n" " " "$microphone_percentage" "%" || printf "%s%s%s\n" " " "$microphone_percentage" "%")" \
 "| $(tmux list-windows -F '#{window_index}#{window_flags}' | awk '{gsub(/\*$/, "*"); printf "%s ", $0} END {print ""}')"
-  echo ""
+echo ""

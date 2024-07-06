@@ -6,10 +6,7 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 5;
-      };
+      systemd-boot = { enable = true; };
       efi.canTouchEfiVariables = true;
     };
     initrd.postDeviceCommands = lib.mkAfter ''
@@ -94,14 +91,10 @@
   };
   console.keyMap = "br-abnt2";
 
-  hardware = { pulseaudio.enable = false; };
-
   security = {
     sudo.wheelNeedsPassword = false;
     rtkit.enable = true;
   };
-
-  nixpkgs = { config = { allowUnfree = false; }; };
 
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
@@ -162,7 +155,7 @@
       "k" = "cd ~/.karma && za";
       "ks" = "cd ~/.karma/scripts && z";
       "v" = "cd ~/.charya && z";
-      "n" = "cd ~/.karma/src/nixos && z";
+      "n" = "cd ~/.karma/src/linux && z";
       "d" = "cd ~/Downloads && z";
       "l" = "cd ~/lince && z";
       "co" = "cd ~/.config && za";
@@ -184,8 +177,9 @@
       "nsds" = "nix-shell ~/.karma/samadhi/data_science.nix";
 
       "nd" = "nix flake update && nix develop && z";
-      "u" = "sudo nix flake update ~/.karma/src/nixos/";
-      "b" = "sudo nixos-rebuild switch --flake ~/.karma/src/nixos#default";
+      "u" = "sudo nix flake update ~/.karma/src/linux/";
+      "b" =
+        "sudo nixos-rebuild switch --flake ~/.karma/src/linux#default --impure";
       "ncs" = "nix-collect-garbage -d && df -h";
       "bah" = "u && b && ncs";
 
@@ -216,6 +210,7 @@
       # SYSTEM CONTROL
       "wifi" = "xterm -e nmtui";
       "i" = "bash ~/.karma/scripts/fetch.sh";
+      "logout" = "pkill -u eduardo";
 
       "va" = "wpctl set-volume @DEFAULT_AUDIO_SINK@";
       "vu" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
@@ -258,7 +253,7 @@
     pipewire = {
       enable = true;
       alsa.enable = true;
-      pulse.enable = true;
+      # pulse.enable = true;
       wireplumber.enable = true;
     };
 
@@ -318,4 +313,3 @@
     stateVersion = "24.05";
   };
 }
-

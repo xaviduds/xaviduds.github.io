@@ -1,0 +1,25 @@
+[window]
+padding = { x = 0, y = 0 }
+decorations = "none"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font" }
+bold = { family = "JetBrainsMono Nerd Font" }
+italic = { family = "JetBrainsMono Nerd Font" }
+bold_italic = { family = "JetBrainsMono Nerd Font" }
+
+[colors]
+primary = { background = "#000000", foreground = "#ffffff" }
+
+[colors.normal]
+black = "#000000"
+white = "#ffffff"
+red = "#ffffff"
+green = "#ffffff"
+yellow = "#ffffff"
+blue = "#ffffff"
+magenta = "#ffffff"
+cyan = "#ffffff"
+
+# [colors.bright]
+# [colors.dim]
