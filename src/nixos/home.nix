@@ -32,8 +32,7 @@ in {
     enable = true;
     settings = {
       monitor = ",highres,auto,1";
-      exec-once =
-        [ "alacritty" "sleep 5 && wpctl set-volume @DEFAULT_SOURCE@ 0.1" ];
+      exec-once = [ "sleep 5 && wpctl set-volume @DEFAULT_SOURCE@ 0.1" ];
       input = {
         kb_layout = "br";
         kb_variant = "abnt2";
@@ -59,14 +58,14 @@ in {
         "SUPER, l, movefocus, r"
         "SUPER, k, movefocus, u"
         "SUPER, j, movefocus, d"
-        "CTRL, H, movewindow, l"
-        "CTRL, L, movewindow, r"
-        "CTRL, K, movewindow, u"
-        "CTRL, J, movewindow, d"
-        "SHIFT, l, resizeactive, 50 0"
-        "SHIFT, h, resizeactive, -50 0"
-        "SHIFT, k, resizeactive, 0 -50"
-        "SHIFT, j, resizeactive, 0 50"
+        "SUPER CTRL, H, movewindow, l"
+        "SUPER CTRL, L, movewindow, r"
+        "SUPER CTRL, K, movewindow, u"
+        "SUPER CTRL, J, movewindow, d"
+        "SUPER SHIFT, l, resizeactive, 50 0"
+        "SUPER SHIFT, h, resizeactive, -50 0"
+        "SUPER SHIFT, k, resizeactive, 0 -50"
+        "SUPER SHIFT, j, resizeactive, 0 50"
         "SUPER, 1, workspace, 1"
         "SUPER, 2, workspace, 2"
         "SUPER, 3, workspace, 3"
@@ -97,16 +96,6 @@ in {
         ", XF86MonBrightnessUp, exec, brightnessctl s +5%"
         ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"
       ];
-    };
-  };
-  dconf.settings = {
-    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
-  };
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome.gnome-themes-extra;
     };
   };
   programs = {
@@ -154,34 +143,12 @@ in {
 
     bash = {
       enable = true;
+      bashrcExtra = ''
+        export PS1="\[\033[01;37m\]\u@\h:\w\$\[\033[00m\] "
+      '';
       initExtra = ''
         tmux_session_checker
       '';
-    };
-
-    firefox = {
-      enable = true;
-      profiles.default = {
-        settings = {
-          "browser.download.panel.shown" = true;
-          "signon.rememberSignons" = false;
-          "browser.newtabpage.enabled" = false;
-          "browser.urlbar.suggest.bookmark" = false;
-          "browser.urlbar.suggest.history" = false;
-          "browser.urlbar.suggest.openpage" = false;
-          "browser.urlbar.suggest.searches" = false;
-          "browser.urlbar.suggest.topsites" = false;
-          "browser.aboutConfig.showWarning" = false;
-          "app.shield.optoutstudies.enabled" = false;
-          "browser.translations.automaticallyPopup" = false;
-          "browser.startup.page" = 3;
-          "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
-        };
-        extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-          ublock-origin
-          videospeed
-        ];
-      };
     };
 
     helix = {
@@ -226,10 +193,6 @@ in {
         name = "nix";
         auto-format = true;
         formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
-        indent = {
-          tab-width = 4;
-          unit = " ";
-        };
       }];
     };
 
@@ -259,7 +222,6 @@ in {
     zathura = {
       enable = true;
       options = {
-        default-fg = "#adadad";
         adjust-open = "width";
         guioptions = "none";
       };
