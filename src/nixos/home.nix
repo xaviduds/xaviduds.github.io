@@ -3,7 +3,6 @@
 let
   black = "000000";
   white = "ffffff";
-  # style = "bg:#${black} fg:#${white}";
   colorPalette = {
     black = "#${white}";
     red = "#${white}";
@@ -143,9 +142,6 @@ in {
 
     bash = {
       enable = true;
-      bashrcExtra = ''
-        export PS1="\[\033[01;37m\]\u@\h:\w\$\[\033[00m\] "
-      '';
       initExtra = ''
         tmux_session_checker
       '';
