@@ -33,21 +33,24 @@
     <p>After connecting to the internet, open the terminal and close the GUI installer. Then run the following code
       below, after the reboot it should be ready:</p>
     <code>
-      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/src/nixos/main/disko.nix -o
+      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io//main/src/nixos/disko.nix -o
         /tmp/disko.nix</p>
-      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/src/nixos/main/flake.nix -o
+      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/nixos/flake.nix -o
         /tmp/flake.nix</p>
-      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/src/nixos/main/configuration.nix -o
+      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/nixos/configuration.nix -o
         /tmp/configuration.nix</p>
-      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/src/nixos/main/home.nix -o
+      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/nixos/home.nix -o
         /tmp/home.nix</p>
       <br>
 
-      <p>sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko
-        /tmp/disko.nix --arg device '"/dev/nvme0n1"'</p>
+      <p>sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/disko.nix --arg device '"/dev/nvme0n1"'</p>
       <p>sudo nixos-generate-config --no-filesystems --root /mnt</p>
-      <p>sudo mv /tmp/*.nix /mnt/etc/nixos/ && sudo mv /mnt/etc/nixos /mnt/persist</p>
+      <p>sudo mv /tmp/*.nix /mnt/etc/nixos/</p>
+      <p>sudo nixos-install --root /mnt --flake /mnt/etc/nixos#default && reboot</p>
+      <br>
+      
       <p>sudo nixos-install --root /mnt --flake /mnt/persist/nixos#default && reboot</p>
+      <p>sudo mv /tmp/*.nix /mnt/etc/nixos/ && sudo mv /mnt/etc/nixos /mnt/persist</p>
     </code>
     <h3>Configure</h3>
     <code>
