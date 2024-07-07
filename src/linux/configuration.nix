@@ -199,7 +199,6 @@
       "mp" = "bash ~/.karma/scripts/sessions/portfolio.sh";
 
       "f" = "firefox &";
-      "fi" = "firefox index.html &";
       "h" = "hx";
 
       "linsql" = "psql -U postgres -d lince";

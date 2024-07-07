@@ -47,9 +47,6 @@ in {
       misc = { disable_hyprland_logo = "true"; };
       bind = [
         "SUPER, Q, exec, alacritty"
-        "SUPER SHIFT, E, exec, bash ~/.karma/scripts/sessions/estudo.sh"
-        "SUPER SHIFT, D, exec, bash ~/.karma/scripts/sessions/lince.sh"
-        "SUPER SHIFT, P, exec, bash ~/.karma/scripts/sessions/portfolio.sh"
         "SUPER, C, killactive"
         "SUPER, M, exit"
         "SUPER, h, movefocus, l"
@@ -84,15 +81,6 @@ in {
         "SUPER SHIFT, 8, movetoworkspace, 8"
         "SUPER SHIFT, 9, movetoworkspace, 9"
         "SUPER SHIFT, 0, movetoworkspace, 10"
-        "SUPER, Print, exec, gscreenshot --selection"
-        ", XF86AudioRaiseVolume,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"
-        ", XF86AudioLowerVolume,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        "SUPER,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_SOURCE@ 0.01+"
-        "SUPER,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SOURCE@ 0.01-"
-        "SUPER, XF86AudioMute, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle"
-        ", XF86MonBrightnessUp, exec, brightnessctl s +5%"
-        ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"
       ];
     };
   };
