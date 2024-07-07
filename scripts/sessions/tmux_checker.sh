@@ -1,7 +1,5 @@
 case $(tmux display-message -p '#S') in
 
-  "estudo_nota") hx ~/.charya/teoria.md;;
-
   "lince_dev") hx ~/lince;;
   # "lince_test") ;;
   

@@ -30,7 +30,7 @@
       ".config/hypr/hyprland.conf".source =
         /home/eduardo/.karma/src/linux/hypr/hyprland.conf;
 
-      # ".bashrc".source = /home/eduardo/.karma/src/linux/bash/.bashrc;
+      ".bashrc".source = /home/eduardo/.karma/src/linux/bash/.bashrc;
       ".bash_aliases".source =
         /home/eduardo/.karma/src/linux/bash/.bash_aliases;
     };
@@ -41,11 +41,11 @@
 
   programs = {
     home-manager.enable = true;
-    bash = {
-      enable = true;
-      initExtra = ''
-        tmux_session_checker
-      '';
-    };
+    # bash = {
+    #   enable = true;
+    #   initExtra = ''
+    #     tmux_session_checker
+    #   '';
+    # };
   };
 }
