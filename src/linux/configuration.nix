@@ -181,6 +181,7 @@
       "u" = "sudo nix flake update ~/.karma/src/linux/";
       "b" =
         "sudo nixos-rebuild switch --flake ~/.karma/src/linux#default --impure";
+      "br" = "b && reboot";
       "ncs" = "nix-collect-garbage -d && df -h";
       "bah" = "u && b && ncs";
 
