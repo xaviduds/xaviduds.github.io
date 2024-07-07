@@ -1,0 +1,19 @@
+theme = "base16_transparent"
+
+[editor]
+line-number = "relative"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+"C-e" = "increment"
+"A-j" = [ "extend_to_line_bounds", "delete_selection", "paste_after" ]
+"A-k" = [ "extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before" ]
+
+# languages.language = [
+# name = "nix"
+# auto-format = true
+# formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt"

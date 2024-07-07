@@ -12,7 +12,7 @@ bold_italic = { family = "JetBrainsMono Nerd Font" }
 primary = { background = "#000000", foreground = "#ffffff" }
 
 [colors.normal]
-black = "#000000"
+black = "#ffffff"
 white = "#ffffff"
 red = "#ffffff"
 green = "#ffffff"
@@ -21,5 +21,22 @@ blue = "#ffffff"
 magenta = "#ffffff"
 cyan = "#ffffff"
 
-# [colors.bright]
-# [colors.dim]
+[colors.bright]
+black = "#ffffff"
+white = "#ffffff"
+red = "#ffffff"
+green = "#ffffff"
+yellow = "#ffffff"
+blue = "#ffffff"
+magenta = "#ffffff"
+cyan = "#ffffff"
+
+[colors.dim]
+black = "#ffffff"
+white = "#ffffff"
+red = "#ffffff"
+green = "#ffffff"
+yellow = "#ffffff"
+blue = "#ffffff"
+magenta = "#ffffff"
+cyan = "#ffffff"

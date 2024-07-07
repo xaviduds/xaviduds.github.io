@@ -107,6 +107,7 @@
       helix
       tmux
       zathura
+      firefox
 
       nil
       nodePackages.bash-language-server
