@@ -188,6 +188,7 @@
       # STUDY
       "zz" = "zathura ~/.charya/estudando/* &";
       "ht" = "hx ~/.charya/teoria.md";
+      "te" = "hx ~/.charya/teoria.md && zathura ~/.charya/estudando/* &";
 
       # TMUX
       "tmux_session_checker" = "bash ~/.karma/scripts/sessions/tmux_checker.sh";

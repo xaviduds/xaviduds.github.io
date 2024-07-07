@@ -33,13 +33,13 @@
     <p>After connecting to the internet, open the terminal and close the GUI installer. Then run the following code
       below, after the reboot it should be ready:</p>
     <code>
-      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io//main/src/nixos/disko.nix -o
+      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/linux/disko.nix -o
         /tmp/disko.nix</p>
-      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/nixos/flake.nix -o
+      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/linux/flake.nix -o
         /tmp/flake.nix</p>
-      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/nixos/configuration.nix -o
+      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/linux/configuration.nix -o
         /tmp/configuration.nix</p>
-      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/nixos/home.nix -o
+      <p>sudo curl -L https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/linux/home.nix -o
         /tmp/home.nix</p>
       <br>
 
@@ -131,7 +131,6 @@
     </p>
 
     <h3>Scripts</h3>
-
     <details>
       <summary>disko.nix</summary>
       <pre id="disko"></pre>
@@ -192,10 +191,10 @@
 
     // Call the function for each file
     window.addEventListener('DOMContentLoaded', () => {
-      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/.nixos/main/disko.nix', 'disko');
-      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/.nixos/main/configuration.nix', 'configuration');
-      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/.nixos/main/flake.nix', 'flake');
-      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/.nixos/main/home.nix', 'home');
+      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/linux/disko.nix', 'disko');
+      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/linux/configuration.nix', 'configuration');
+      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/linux/flake.nix', 'flake');
+      fetchAndDisplayContent('https://raw.githubusercontent.com/xaviduds/xaviduds.github.io/main/src/linux/home.nix', 'home');
     });
   </script>
 </body>
