@@ -75,20 +75,8 @@
 
   time.timeZone = "America/Sao_Paulo";
 
-  i18n = {
-    defaultLocale = "pt_BR.UTF-8";
-    # extraLocaleSettings = {
-    #   LC_ADDRESS = "pt_BR.UTF-8";
-    #   LC_IDENTIFICATION = "pt_BR.UTF-8";
-    #   LC_MEASUREMENT = "pt_BR.UTF-8";
-    #   LC_MONETARY = "pt_BR.UTF-8";
-    #   LC_NAME = "pt_BR.UTF-8";
-    #   LC_NUMERIC = "pt_BR.UTF-8";
-    #   LC_PAPER = "pt_BR.UTF-8";
-    #   LC_TELEPHONE = "pt_BR.UTF-8";
-    #   LC_TIME = "pt_BR.UTF-8";
-    # };
-  };
+  i18n.defaultLocale = "pt_BR.UTF-8";
+
   console.keyMap = "br-abnt2";
 
   security = {
@@ -105,6 +93,7 @@
       eza
       git
       helix
+      man
       tmux
       zathura
       firefox
@@ -186,6 +175,9 @@
       "bah" = "u && b && ncs";
 
       # STUDY
+      "ht" = "hx ~/.charya";
+      "zt" = "zathura ~/.charya/estudando/* &";
+      "at" = "hx ~/.charya && zathura ~/.charya/estudando/* &";
 
       # TMUX
       "tmux_session_checker" = "bash ~/.karma/scripts/sessions/tmux_checker.sh";
@@ -195,33 +187,38 @@
         "tmux split-window -v \\; split-window -h \\; select-pane -L \\; select-pane -U && clear";
 
       # DEV
-      "ml" = "hx ~/lince/src/app/lince.py";
-      "mp" = "bash ~/.karma/scripts/sessions/portfolio.sh";
-
       "f" = "firefox &";
       "h" = "hx";
+      "hp" = "hx ~/.karma";
 
       "linsql" = "psql -U postgres -d lince";
 
-      "lincetest" =
+      "hl" = "hx ~/lince/src/app/lince.py";
+      "linceapploop" =
         "while true; do python ~/lince/src/app/lince.py; sleep 1; done";
+      "lap" = "while true; do python ~/lince/src/app/lince.py; sleep 1; done";
+
+      "lincetestloop" =
+        "while true; do python ~/lince/org/test/test.py; sleep 1; done";
+      "ltl" = "while true; do python ~/lince/org/test/test.py; sleep 1; done";
 
       # SYSTEM CONTROL
       "wifi" = "xterm -e nmtui";
       "i" = "bash ~/.karma/scripts/fetch.sh";
       "logout" = "pkill -u eduardo";
 
-      "va" = "wpctl set-volume @DEFAULT_AUDIO_SINK@";
+      "vt" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
       "vu" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
       "vd" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
-      "vt" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+      "va" = "wpctl set-volume @DEFAULT_AUDIO_SINK@";
       "v0" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0";
 
-      "ma" = "wpctl set-volume @DEFAULT_SOURCE@";
+      "mt" = "wpctl set-mute @DEFAULT_SOURCE@ toggle";
       "mu" = "wpctl set-volume @DEFAULT_SOURCE@ 0.01+";
       "md" = "wpctl set-volume @DEFAULT_SOURCE@ 0.01-";
-      "mt" = "wpctl set-mute @DEFAULT_SOURCE@ toggle";
+      "ma" = "wpctl set-volume @DEFAULT_SOURCE@";
       "m0" = "wpctl set-volume @DEFAULT_SOURCE@ 0";
+      "m10" = "wpctl set-volume @DEFAULT_SOURCE@ 0.1";
 
       "bu" = "brightnessctl s +5%";
       "bd" = "brightnessctl s 5%-";
@@ -252,7 +249,6 @@
     pipewire = {
       enable = true;
       alsa.enable = true;
-      # pulse.enable = true;
       wireplumber.enable = true;
     };
 
@@ -273,7 +269,6 @@
         };
       };
     };
-
   };
 
   systemd.tmpfiles.rules = [
