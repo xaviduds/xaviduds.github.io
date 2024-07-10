@@ -36,6 +36,8 @@
       ".bashrc".source = /home/eduardo/.karma/src/linux/bash/.bashrc;
       ".bash_aliases".source =
         /home/eduardo/.karma/src/linux/bash/.bash_aliases;
+      ".bash_profile".source =
+        /home/eduardo/.karma/src/linux/bash/.bash_profile;
     };
   };
 }

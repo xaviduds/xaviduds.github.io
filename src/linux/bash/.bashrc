@@ -1,7 +1,3 @@
-if [ -f ~/.bash_aliases ]; then
-    . /home/eduardo/.bash_aliases
-fi
-
 case $(tmux display-message -p '#S') in
 
   *)
@@ -11,9 +7,13 @@ case $(tmux display-message -p '#S') in
   tmux
   clear
   cd ~/lince && clear
-  bash ~/.karma/scripts/fetch.sh
+  bash ~/.karma/src/linux/bash/fetch.sh
   ls --group-directories-first -AFw1
   echo
   if [ -d .git ]; then git status; fi;;
 
 esac
+
+if [ -f ~/.bash_aliases ]; then
+    . /home/eduardo/.bash_aliases
+fi
