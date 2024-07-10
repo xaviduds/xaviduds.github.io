@@ -12,6 +12,7 @@
     homeDirectory = "/home/eduardo";
     stateVersion = "24.05";
     file = {
+      ".gitconfig".source = /home/eduardo/.karma/src/linux/git/.gitconfig;
       ".config/zathura/zathurarc".source =
         /home/eduardo/.karma/src/linux/zathura/zathurarc;
 

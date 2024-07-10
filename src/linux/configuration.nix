@@ -57,15 +57,15 @@
     fuse.userAllowOther = true;
     hyprland.enable = true;
     dconf.enable = true;
-    git = {
-      enable = true;
-      config = {
-        user = {
-          name = "xaviduds";
-          email = "xaviduds@gmail.com";
-        };
-      };
-    };
+    # git = {
+    #   enable = true;
+    #   config = {
+    #     user = {
+    #       name = "xaviduds";
+    #       email = "xaviduds@gmail.com";
+    #     };
+    #   };
+    # };
   };
 
   networking = {
