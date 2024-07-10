@@ -24,32 +24,32 @@ in {
     username = "eduardo";
     homeDirectory = "/home/eduardo";
     stateVersion = "24.05";
-    # file = {
-    #   ".config/zathura/zathurarc".source =
-    #     /home/eduardo/.karma/src/linux/zathura/zathurarc;
+    file = {
+      ".config/zathura/zathurarc".source =
+        /home/eduardo/.karma/src/linux/zathura/zathurarc;
 
-    #   ".config/alacritty/alacritty.toml".source =
-    #     /home/eduardo/.karma/src/linux/alacritty/alacritty.toml;
+      #   ".config/alacritty/alacritty.toml".source =
+      #     /home/eduardo/.karma/src/linux/alacritty/alacritty.toml;
 
-    #   ".config/helix/config.toml".source =
-    #     /home/eduardo/.karma/src/linux/helix/config.toml;
-    #   ".config/helix/languages.toml".text = ''
-    #     [[language]]
-    #     name = "nix"
-    #     auto-format = true
-    #     formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt"
-    #   '';
+      #   ".config/helix/config.toml".source =
+      #     /home/eduardo/.karma/src/linux/helix/config.toml;
+      #   ".config/helix/languages.toml".text = ''
+      #     [[language]]
+      #     name = "nix"
+      #     auto-format = true
+      #     formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt"
+      #   '';
 
-    #   ".config/tmux/tmux.conf".source =
-    #     /home/eduardo/.karma/src/linux/tmux/tmux.conf;
+      #   ".config/tmux/tmux.conf".source =
+      #     /home/eduardo/.karma/src/linux/tmux/tmux.conf;
 
-    #   ".config/hypr/hyprland.conf".source =
-    #     /home/eduardo/.karma/src/linux/hypr/hyprland.conf;
+      #   ".config/hypr/hyprland.conf".source =
+      #     /home/eduardo/.karma/src/linux/hypr/hyprland.conf;
 
-    #   ".bashrc".source = /home/eduardo/.karma/src/linux/bash/.bashrc;
-    #   ".bash_aliases".source =
-    #     /home/eduardo/.karma/src/linux/bash/.bash_aliases;
-    # };
+      ".bashrc".source = /home/eduardo/.karma/src/linux/bash/.bashrc;
+      ".bash_aliases".source =
+        /home/eduardo/.karma/src/linux/bash/.bash_aliases;
+    };
     sessionVariables = { EDITOR = "hx"; };
   };
 
@@ -153,26 +153,26 @@ in {
       };
     };
 
-    bash = {
-      enable = true;
-      initExtra = ''
-        case $(tmux display-message -p '#S') in
+    # bash = {
+    #   enable = true;
+    #   initExtra = ''
+    #     case $(tmux display-message -p '#S') in
 
-          *)
-          clear
-          tmux attach
-          clear
-          tmux
-          clear
-          cd ~/lince && clear
-          bash ~/.karma/scripts/fetch.sh
-          ls --group-directories-first -AFw1
-          echo
-          if [ -d .git ]; then git status; fi;;
+    #       *)
+    #       clear
+    #       tmux attach
+    #       clear
+    #       tmux
+    #       clear
+    #       cd ~/lince && clear
+    #       bash ~/.karma/scripts/fetch.sh
+    #       ls --group-directories-first -AFw1
+    #       echo
+    #       if [ -d .git ]; then git status; fi;;
 
-        esac
-      '';
-    };
+    #     esac
+    #   '';
+    # };
 
     helix = {
       enable = true;
@@ -242,12 +242,12 @@ in {
         set -g status off
       '';
     };
-    zathura = {
-      enable = true;
-      options = {
-        adjust-open = "width";
-        guioptions = "none";
-      };
-    };
+    # zathura = {
+    #   enable = true;
+    #   options = {
+    #     adjust-open = "width";
+    #     guioptions = "none";
+    #   };
+    # };
   };
 }
