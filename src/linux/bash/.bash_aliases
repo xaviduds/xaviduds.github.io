@@ -1,26 +1,3 @@
-# idate_printer() {
-#   date +"%Y-%m-%d %H:%M:%S %A"
-# }
-# ivolume_printer() {
-# volume_percentage=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk -F " " '{print $2*100}')
-# volume_state=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk -F'[\\[\\]]' 'END{print $2}')
-# ( [ "$volume_state" == "MUTED" ] && printf "%s%s%s\n" " " "$volume_percentage" "%"|| printf "%s%s%s%s\n" "  " " " "$volume_percentage" "%")
-# }
-# imicrophone_printer() {
-# microphone_percentage=$(wpctl get-volume @DEFAULT_SOURCE@ | awk -F " " '{print $2*100}')
-# microphone_state=$(wpctl get-volume @DEFAULT_SOURCE@ | awk -F'[\\[\\]]' 'END{print $2}')
-# ( [ "$microphone_state" == "MUTED" ] && printf "%s%s%s\n" " " "$microphone_percentage" "%" || printf "%s%s%s\n" " " "$microphone_percentage" "%")
-# }
-# itmux_printer() {
-# tmux list-windows -F '#{window_index}#{window_flags}' | awk '{gsub(/\*$/, "*"); printf "%s ", $0} END {print ""}'
-# }
-alias iatencao="echo -n Atenção é a fonte de amor, prazer e paz. Supere o que diminui isso."
-# alias idate='echo -n $(date +"%Y-%m-%d %H:%M:%S %A")'
-# alias ibattery='echo -n 󰁹 $(cat /sys/class/power_supply/BAT0/capacity)%'
-# alias ivolume='echo -n $(ivolume_printer)'
-# alias imicrophone='echo -n $(imicrophone_printer)'
-# alias itmux='echo $(itmux_printer)'
-# alias i='iatencao && echo -n " " && idate && echo -n " " && ibattery && echo -n " " && ivolume && echo -n " " && imicrophone && echo -n " " && itmux'
 alias i="bash ~/.karma/src/linux/bash/fetch.sh"
 alias rb="reboot"
 alias s="if [ -d .git ]; then git status; fi"
