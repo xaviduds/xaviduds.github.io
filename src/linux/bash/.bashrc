@@ -8,11 +8,7 @@ if [ -f ~/.bash_aliases ]; then
     . /home/eduardo/.bash_aliases
 fi
 
-cd ~/lince && clear
-i
-ls --group-directories-first -AFw1
-echo
-if [ -d .git ]; then git status; fi
+l
 
 shopt -s autocd
 

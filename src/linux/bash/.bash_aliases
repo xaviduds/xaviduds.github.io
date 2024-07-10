@@ -1,6 +1,6 @@
 alias i="bash ~/.karma/src/linux/bash/fetch.sh"
 alias rb="reboot"
-alias s="if [ -d .git ]; then git status; fi"
+alias s="if [ -d .git ]; then git diff --quiet || git status && echo; fi"
 alias gd="git diff"
 alias gl="git log -p"
 alias a="git add"
