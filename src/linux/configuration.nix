@@ -89,15 +89,16 @@
 
   environment = {
     systemPackages = with pkgs; [
-      alacritty
-      eza
+      # Hard de se livrar
       git
-      helix
+
+      # Se livrar
       man
+      firefox
       tmux
       zathura
-      firefox
-
+      alacritty
+      helix
       nil
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
@@ -114,6 +115,7 @@
       "s" = "if [ -d .git ]; then git status; fi";
 
       "gd" = "git diff";
+      "gl" = "git log -p";
 
       "a" = "git add";
       "aa" = "git add .";
@@ -132,25 +134,19 @@
 
       # MOVING AROUND, FINDING OUT
       "z" =
-        "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s name -a -T -L 2         && s";
-      "za" =
-        "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s name -a                 && s";
+        "clear && bash ~/.karma/scripts/fetch.sh && ls --group-directories-first -AFw1 && echo && s";
       "t" =
-        "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s name -T -L 2            && s";
-      "zs" =
-        "clear && bash ~/.karma/scripts/fetch.sh && eza --icons=always --group-directories-first -I .git -lh --no-user --no-permissions --git-repos --git --no-time -s size -r -a --total-size && s";
+        "clear && bash ~/.karma/scripts/fetch.sh && ls --group-directories-first -AFRw1 && echo && s";
 
-      "et" = "eza -T";
-
-      "k" = "cd ~/.karma && za";
+      "k" = "cd ~/.karma && z";
       "ks" = "cd ~/.karma/scripts && z";
       "v" = "cd ~/.charya && z";
-      "n" = "cd ~/.karma/src/linux && z";
+      "n" = "cd ~/.karma/src/linux && z && hx .";
       "d" = "cd ~/Downloads && z";
       "l" = "cd ~/lince && z";
-      "co" = "cd ~/.config && za";
-      "dc" = "cd ~/ && za";
-      "ksrc" = "cd ~/.karma/src && za";
+      "co" = "cd ~/.config && z";
+      "dc" = "cd ~/ && z";
+      "ksrc" = "cd ~/.karma/src && z";
       "lsrc" = "cd ~/lince/src && z";
 
       ".." = "cd ..";
@@ -160,10 +156,17 @@
       "ns" = "nix-shell";
       "np" = "nix-shell -p";
       "ff" = "nix-shell -p firefox";
+
       "nslince" = "nix-shell ~/lince/default.nix";
-      "nsreact" = "nix-shell ~/.karma/samadhi/react.nix";
+      "nsl" = "nix-shell ~/lince/default.nix";
+
       "nspython" = "nix-shell ~/.karma/samadhi/python.nix";
+      "nsp" = "nix-shell ~/.karma/samadhi/python.nix";
+
+      "nsreact" = "nix-shell ~/.karma/samadhi/react.nix";
+
       "nsrust" = "nix-shell ~/.karma/samadhi/rust.nix";
+
       "nsds" = "nix-shell ~/.karma/samadhi/data_science.nix";
 
       "nd" = "nix flake update && nix develop && z";
