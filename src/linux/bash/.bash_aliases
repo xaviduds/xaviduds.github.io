@@ -1,6 +1,29 @@
-alias r="reboot"
-alias s="if [ -d .git ]; then git status; fi"
+# idate_printer() {
+#   date +"%Y-%m-%d %H:%M:%S %A"
+# }
+# ivolume_printer() {
+# volume_percentage=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk -F " " '{print $2*100}')
+# volume_state=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk -F'[\\[\\]]' 'END{print $2}')
+# ( [ "$volume_state" == "MUTED" ] && printf "%s%s%s\n" " " "$volume_percentage" "%"|| printf "%s%s%s%s\n" "  " " " "$volume_percentage" "%")
+# }
+# imicrophone_printer() {
+# microphone_percentage=$(wpctl get-volume @DEFAULT_SOURCE@ | awk -F " " '{print $2*100}')
+# microphone_state=$(wpctl get-volume @DEFAULT_SOURCE@ | awk -F'[\\[\\]]' 'END{print $2}')
+# ( [ "$microphone_state" == "MUTED" ] && printf "%s%s%s\n" " " "$microphone_percentage" "%" || printf "%s%s%s\n" " " "$microphone_percentage" "%")
+# }
+# itmux_printer() {
+# tmux list-windows -F '#{window_index}#{window_flags}' | awk '{gsub(/\*$/, "*"); printf "%s ", $0} END {print ""}'
+# }
+alias iatencao="echo -n Atenção é a fonte de amor, prazer e paz. Supere o que diminui isso."
+# alias idate='echo -n $(date +"%Y-%m-%d %H:%M:%S %A")'
+# alias ibattery='echo -n 󰁹 $(cat /sys/class/power_supply/BAT0/capacity)%'
+# alias ivolume='echo -n $(ivolume_printer)'
+# alias imicrophone='echo -n $(imicrophone_printer)'
+# alias itmux='echo $(itmux_printer)'
+# alias i='iatencao && echo -n " " && idate && echo -n " " && ibattery && echo -n " " && ivolume && echo -n " " && imicrophone && echo -n " " && itmux'
 alias i="bash ~/.karma/src/linux/bash/fetch.sh"
+alias rb="reboot"
+alias s="if [ -d .git ]; then git status; fi"
 alias gd="git diff"
 alias gl="git log -p"
 alias a="git add"
@@ -58,16 +81,16 @@ alias lincetestloop="while true; do python ~/lince/org/test/test.py; sleep 1; do
 alias ltl="while true; do python ~/lince/org/test/test.py; sleep 1; done"
 alias wifi="xterm -e nmtui"
 alias logout="pkill -u eduardo"
-alias vt="wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-alias vu="wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"
-alias vd="wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"
+alias vt="wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && z"
+alias vu="wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ && z"
+alias vd="wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- && z"
 alias va="wpctl set-volume @DEFAULT_AUDIO_SINK@"
-alias v0="wpctl set-volume @DEFAULT_AUDIO_SINK@ 0"
-alias mt="wpctl set-mute @DEFAULT_SOURCE@ toggle"
-alias mu="wpctl set-volume @DEFAULT_SOURCE@ 0.01+"
-alias md="wpctl set-volume @DEFAULT_SOURCE@ 0.01-"
+alias v0="wpctl set-volume @DEFAULT_AUDIO_SINK@ 0 && z"
+alias mt="wpctl set-mute @DEFAULT_SOURCE@ toggle && z"
+alias mu="wpctl set-volume @DEFAULT_SOURCE@ 0.01+ && z"
+alias md="wpctl set-volume @DEFAULT_SOURCE@ 0.01- && z"
 alias ma="wpctl set-volume @DEFAULT_SOURCE@"
-alias m0="wpctl set-volume @DEFAULT_SOURCE@ 0"
-alias m10="wpctl set-volume @DEFAULT_SOURCE@ 0.1"
+alias m0="wpctl set-volume @DEFAULT_SOURCE@ 0 && z"
+alias m10="wpctl set-volume @DEFAULT_SOURCE@ 0.1 && z"
 alias bu="brightnessctl s +5%"
 alias bd="brightnessctl s 5%-"
