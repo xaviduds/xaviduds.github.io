@@ -93,12 +93,12 @@
       git
 
       # Se livrar
-      man
+      alacritty
       firefox
+      helix
       tmux
       zathura
-      alacritty
-      helix
+
       nil
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
@@ -180,10 +180,8 @@
       # STUDY
       "ht" = "hx ~/.charya";
       "zt" = "zathura ~/.charya/estudando/* &";
-      "at" = "hx ~/.charya && zathura ~/.charya/estudando/* &";
 
       # TMUX
-      "tmux_session_checker" = "bash ~/.karma/scripts/sessions/tmux_checker.sh";
       "22" =
         "tmux split-window -h \\; split-window -v \\; select-pane -L \\; split-window -v \\; select-pane -U && clear";
       "12" =
@@ -192,7 +190,7 @@
       # DEV
       "f" = "firefox &";
       "h" = "hx";
-      "hp" = "hx ~/.karma";
+      "hk" = "hx ~/.karma";
 
       "linsql" = "psql -U postgres -d lince";
 
