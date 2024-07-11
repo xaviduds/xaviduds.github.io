@@ -66,12 +66,6 @@
     '';
   };
 
-  fileSystems."/persist".neededForBoot = true;
-  environment.persistence."/persist/system" = {
-    hideMounts = true;
-    directories = [ "/etc/NetworkManager/system-connections" ];
-  };
-
   users.users.eduardo = {
     isNormalUser = true;
     description = "eduardo";
@@ -87,12 +81,6 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = { "eduardo" = import ./home.nix; };
-  };
-
-  programs = {
-    fuse.userAllowOther = true;
-    hyprland.enable = true;
-    dconf.enable = true;
   };
 
   networking = {
@@ -111,6 +99,18 @@
     rtkit.enable = true;
   };
 
+  fileSystems."/persist".neededForBoot = true;
+  environment.persistence."/persist/system" = {
+    hideMounts = true;
+    directories = [ "/etc/NetworkManager/system-connections" ];
+  };
+
+  programs = {
+    fuse.userAllowOther = true;
+    hyprland.enable = true;
+    dconf.enable = true;
+  };
+
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
@@ -122,14 +122,13 @@
       # Se livrar
       alacritty
       helix
+
       nil
-      # https://github.com/lapce/lapce
       nodePackages.bash-language-server
       python311Packages.python-lsp-server
 
       tmux
       zathura
-      firefox
     ];
   };
 
@@ -155,16 +154,6 @@
       alsa.enable = true;
       wireplumber.enable = true;
     };
-
-    # postgresql = {
-    #   authentication = pkgs.lib.mkOverride 10 ''
-    #       #type database  DBuser  auth-method
-    #       				local all       all     trust
-    #     enable = true;
-    #       				host all       all     127.0.0.1/32   trust
-    #       				host all       all     ::1/128        trust		
-    #       				'';
-    # };
 
     xserver = {
       enable = true;

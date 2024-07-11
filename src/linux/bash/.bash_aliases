@@ -38,6 +38,7 @@ alias ap="git add -p"
 alias ai="git add -i"
 
 alias m="git commit -m"
+alias am="aa && m"
 
 alias gp="git pull"
 alias gpr="git pull --rebase"
