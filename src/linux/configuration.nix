@@ -121,18 +121,15 @@
 
       # Se livrar
       alacritty
-      firefox
       helix
+      nil
+      # https://github.com/lapce/lapce
+      nodePackages.bash-language-server
+      python311Packages.python-lsp-server
+
       tmux
       zathura
-
-      nil
-      nodePackages.bash-language-server
-      nodePackages.typescript-language-server
-      python311Packages.python-lsp-server
-      rust-analyzer
-      rustfmt
-      vscode-langservers-extracted
+      firefox
     ];
   };
 
@@ -159,15 +156,15 @@
       wireplumber.enable = true;
     };
 
-    postgresql = {
-      enable = true;
-      authentication = pkgs.lib.mkOverride 10 ''
-        #type database  DBuser  auth-method
-        				local all       all     trust
-        				host all       all     127.0.0.1/32   trust
-        				host all       all     ::1/128        trust		
-        				'';
-    };
+    # postgresql = {
+    #   authentication = pkgs.lib.mkOverride 10 ''
+    #       #type database  DBuser  auth-method
+    #       				local all       all     trust
+    #     enable = true;
+    #       				host all       all     127.0.0.1/32   trust
+    #       				host all       all     ::1/128        trust		
+    #       				'';
+    # };
 
     xserver = {
       enable = true;
