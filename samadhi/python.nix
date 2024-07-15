@@ -1,11 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
-
-let py = pkgs.python3Packages;
-
-in pkgs.mkShell {
-  buildInputs = [
-    # Example 'py.datetime'
-    pkgs.python3
-  ];
-}
-
+{
+  pkgs ? import <nixpkgs> { },
+}:
+pkgs.mkShell { buildInputs = with pkgs; [ python3Packages.python3 ]; }

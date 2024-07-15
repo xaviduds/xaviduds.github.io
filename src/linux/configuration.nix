@@ -1,4 +1,9 @@
-{ inputs, lib, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -10,7 +15,10 @@
     };
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
     gc = {
       automatic = true;
@@ -37,7 +45,9 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
-      systemd-boot = { enable = true; };
+      systemd-boot = {
+        enable = true;
+      };
       efi.canTouchEfiVariables = true;
     };
     initrd.postDeviceCommands = lib.mkAfter ''
@@ -70,7 +80,11 @@
     isNormalUser = true;
     description = "eduardo";
     initialPassword = "1";
-    extraGroups = [ "audio" "networkmanager" "wheel" ];
+    extraGroups = [
+      "audio"
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   systemd.tmpfiles.rules = [
@@ -79,13 +93,19 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = { "eduardo" = import ./home.nix; };
+    extraSpecialArgs = {
+      inherit inputs;
+    };
+    users = {
+      "eduardo" = import ./home.nix;
+    };
   };
 
   networking = {
     hostName = "nixos";
-    networkmanager = { enable = true; };
+    networkmanager = {
+      enable = true;
+    };
   };
 
   time.timeZone = "America/Sao_Paulo";
@@ -111,22 +131,17 @@
     dconf.enable = true;
   };
 
-  fonts.packages = with pkgs;
-    [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   environment = {
     systemPackages = with pkgs; [
-      # Hard de se livrar
-      git
-
       # Se livrar
+      git
       alacritty
       helix
-
-      nil
+      nixfmt-rfc-style
       nodePackages.bash-language-server
       python311Packages.python-lsp-server
-
       tmux
       zathura
     ];

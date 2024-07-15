@@ -28,7 +28,7 @@ alias bu="brightnessctl s +5%"
 alias bd="brightnessctl s 5%-"
 
 # GIT
-alias s="if [ -d .git ]; then git diff --quiet || git status && echo; fi"
+alias s="[ -d .git ] && git status"
 alias gd="git diff"
 alias gl="git log -p"
 
@@ -60,6 +60,7 @@ alias d="cd ~/Downloads && z"
 ## KARMA
 alias k="cd ~/.karma && z"
 alias ks="cd ~/.karma/scripts && z"
+alias sa="cd ~/.karma/samadhi && z"
 alias ksrc="cd ~/.karma/src && z"
 alias n="cd ~/.karma/src/linux && z && hx ."
 alias hk="hx ~/.karma"
@@ -78,7 +79,7 @@ alias hl="l && hx ~/lince/src/app/lince.py"
 
 ### TESTING
 alias ldl="while true; do python ~/lince/src/app/lince.py; sleep 1; done"
-alias ltl="while true; do python ~/lince/org/test/test.py; sleep 1; done"
+alias ltl="while true; do python ~/lince/test/test.py; sleep 1; done"
 
 ## CHARYA
 
@@ -97,13 +98,19 @@ alias np="nix-shell -p"
 
 alias nsp="nix-shell ~/.karma/samadhi/python.nix"
 alias nsds="nix-shell ~/.karma/samadhi/data_science.nix"
+alias f="nix-shell ~/.karma/samadhi/firefox.nix"
 
 ## BUILD
 alias nd="nix flake update && nix develop && z"
 alias u="sudo nix flake update ~/.karma/src/linux/"
+
 alias b="sudo nixos-rebuild switch --flake ~/.karma/src/linux#default --impure"
 alias br="b && reboot"
+
 alias ncs="nix-collect-garbage -d && df -h"
+alias nph="nix-shell -p nh"
+alias nhc="nh clean all"
+
 alias bah="u && b && ncs"
 
 # TMUX

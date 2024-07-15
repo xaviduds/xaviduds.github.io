@@ -25,7 +25,7 @@
         [[language]]
         name = "nix"
         auto-format = true
-        formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt"
+        formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt"
       '';
 
       ".config/tmux/tmux.conf".source =
