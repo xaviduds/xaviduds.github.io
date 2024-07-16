@@ -1,16 +1,14 @@
-{ pkgs ? import <nixpkgs> { } }:
-
-let py = pkgs.python3Packages;
-
-in pkgs.mkShell {
-  buildInputs = [
-    pkgs.python3
-    py.numpy
-    py.pandas
-    py.plotly
-    py.packaging
-    py.matplotlib
-    py.scikit-learn
+{
+  pkgs ? import <nixpkgs> { },
+}:
+pkgs.mkShell {
+  buildInputs = with pkgs; [
+    python312
+    python312Packages.numpy
+    python312Packages.pandas
+    python312Packages.plotly
+    python312Packages.packaging
+    python312Packages.matplotlib
+    python312Packages.scikit-learn
   ];
 }
-
