@@ -4,7 +4,7 @@ alias ..="cd .."
 alias e="exit"
 alias rb="reboot"
 alias po="poweroff"
-alias wifi="xterm -e nmtui"
+alias wifi="xterm -e nmtui &"
 alias logout="pkill -u eduardo"
 alias i="bash ~/.karma/src/linux/bash/fetch.sh"
 
@@ -25,12 +25,17 @@ alias m10="wpctl set-volume @DEFAULT_SOURCE@ 0.1 && z"
 
 ## BRIGHTNESS
 alias bu="brightnessctl s +5%"
-alias bd="brightnessctl s 5%-"
+alias bd="brightnessctl s -5%"
 
 # GIT
+alias o="origin"
 alias s="[ -d .git ] && git status"
+alias gb="git branch"
+alias gc="git checkout"
+alias gr="git restore"
 alias gd="git diff"
 alias gl="git log -p"
+alias gt="git tag"
 
 alias a="git add"
 alias aa="git add ."
@@ -62,33 +67,8 @@ alias k="cd ~/.karma && z"
 alias ks="cd ~/.karma/scripts && z"
 alias sa="cd ~/.karma/samadhi && z"
 alias ksrc="cd ~/.karma/src && z"
-alias n="cd ~/.karma/src/linux && z && hx ."
+alias n="hx ~/.karma/src/linux && cd ~/.karma/src/linux && z"
 alias hk="hx ~/.karma"
-
-## LINCE
-
-### SHELL
-alias nsl="nix-shell ~/lince/default.nix"
-
-### POSTGRE
-alias linsql="psql -U postgres -d lince"
-
-### CD & HX
-alias l="cd ~/lince && z"
-alias hl="l && hx ~/lince/src/app/lince.py"
-
-### TESTING
-alias ldl="while true; do python ~/lince/src/app/lince.py; sleep 1; done"
-alias ltl="while true; do python ~/lince/test/test.py; sleep 1; done"
-
-## CHARYA
-
-### WRITING
-alias c="cd ~/.charya && z"
-alias hc="c && hx ~/.charya"
-
-### READING
-alias zc="zathura ~/.charya/estudando/* &"
 
 # NIX
 
@@ -98,23 +78,48 @@ alias np="nix-shell -p"
 
 alias nsp="nix-shell ~/.karma/samadhi/python.nix"
 alias nsds="nix-shell ~/.karma/samadhi/data_science.nix"
-alias f="nix-shell ~/.karma/samadhi/firefox.nix"
+alias nhc="nix-shell ~/.karma/samadhi/nh.nix"
+alias w="librewolf &"
 
 ## BUILD
-alias nd="nix flake update && nix develop && z"
 alias u="sudo nix flake update ~/.karma/src/linux/"
-
 alias b="sudo nixos-rebuild switch --flake ~/.karma/src/linux#default --impure"
 alias br="b && reboot"
-
 alias ncs="nix-collect-garbage -d && df -h"
-alias nph="nix-shell -p nh"
-alias nhc="nh clean all"
-
 alias bah="u && b && ncs"
 
-# TMUX
-alias 12="tmux split-window -v \\; split-window -h \\; select-pane -L \\; select-pane -U && clear"
-alias 22="tmux split-window -h \\; split-window -v \\; select-pane -L \\; split-window -v \\; select-pane -U && clear"
+# LINCE
+## PERSONAL
+alias gcl="git clone https://github.com/lince-social/lince.git"
+alias lp="cd ~/.charya/lince && z"
+alias hlp="hx ~/.charya/lince/src/app/lince.py && lp"
+alias nlp="lp && ns"
 
+## STARTUP
+alias nsl="nix-shell ~/lince/default.nix"
+alias pyl="python src/cli.py"
 
+## CD & HX
+alias l="cd ~/lince && z"
+alias hl="hx ~/lince/src && l"
+
+## TESTING
+alias ltl="while true; do python ~/lince/test/test.py; sleep 1; done"
+
+## BUILDING
+alias lv='rm "src/db/dump.sql" && git add . && git commit -m "Build rm dump.sql temporarily else error happened" && read -p "Tag name: " TAG && git tag "$TAG" && git reset --hard HEAD~1"'
+
+## PULLING
+alias gpl="cp src/db/dump.sql ~/dump.sql && mv src/db/dump.sql .. && git restore src/db/dump.sql && git pull --rebase && mv ../dump.sql src/db/dump.sql"
+
+# CHARYA
+
+## WRITING
+alias v="cd ~/.charya && z"
+alias hv="hx ~/.charya && v"
+
+## READING
+alias zv="zathura ~/.charya/estudando/* &"
+
+# CARGO
+alias c="cargo"

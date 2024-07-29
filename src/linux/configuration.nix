@@ -135,15 +135,17 @@
 
   environment = {
     systemPackages = with pkgs; [
-      # Se livrar
       git
       alacritty
       helix
       nixfmt-rfc-style
       nodePackages.bash-language-server
-      python311Packages.python-lsp-server
+      python312Packages.python-lsp-server
       tmux
       zathura
+      librewolf
+      zip
+      unzip
     ];
   };
 

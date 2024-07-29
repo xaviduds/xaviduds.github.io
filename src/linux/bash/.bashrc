@@ -8,7 +8,7 @@ if [ -f ~/.bash_aliases ]; then
     . /home/eduardo/.bash_aliases
 fi
 
-l
+z
 
 shopt -s autocd
 
