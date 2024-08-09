@@ -44,12 +44,16 @@ alias ai="git add -i"
 
 alias m="git commit -m"
 alias am="aa && m"
+alias ac="aa && m 'commit' && z"
 
 alias gp="git pull"
 alias gpr="git pull --rebase"
 alias p="git push"
 
 alias cc="aa && m 'commit' && p && z"
+
+# TREASON
+alias lg='lazygit'
 
 # MESSING AROUND, FINDING OUT
 
@@ -79,6 +83,7 @@ alias np="nix-shell -p"
 alias nsp="nix-shell ~/.karma/samadhi/python.nix"
 alias nsds="nix-shell ~/.karma/samadhi/data_science.nix"
 alias nhc="nix-shell ~/.karma/samadhi/nh.nix"
+alias ng="nix-shell ~/.karma/samadhi/go.nix"
 alias w="librewolf &"
 
 ## BUILD
@@ -104,13 +109,20 @@ alias l="cd ~/lince && z"
 alias hl="hx ~/lince/src && l"
 
 ## TESTING
-alias ltl="while true; do python ~/lince/test/test.py; sleep 1; done"
+# alias ltl='read -p "Python file path: " python_file_pat; while true; do python $python_file_path; sleep 1; done'
+# alias ltl='while true; do python "$1"; sleep 1; done'
+ltl() {
+    while true; do
+        python3 "$1"
+        sleep 1
+    done
+}
 
 ## BUILDING
 alias lv='rm "src/db/dump.sql" && git add . && git commit -m "Build rm dump.sql temporarily else error happened" && read -p "Tag name: " TAG && git tag "$TAG" && git reset --hard HEAD~1"'
 
 ## PULLING
-alias gpl="cp src/db/dump.sql ~/dump.sql && mv src/db/dump.sql .. && git restore src/db/dump.sql && git pull --rebase && mv ../dump.sql src/db/dump.sql"
+alias gpl="cp src/db/versions/default.sql ~/default.sql && mv src/db/versions/default.sql .. && cp ../default.sql src/db/versions/default.sql && git restore src/db/versions/default.sql && git pull --rebase && mv ../default.sql src/db/versions/default.sql"
 
 # CHARYA
 

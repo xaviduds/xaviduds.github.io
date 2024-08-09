@@ -10,6 +10,7 @@
         ".karma"
         ".ssh"
         ".local/share/zathura"
+        ".local/state/lazygit"
         ".rustup"
       ];
       allowOther = true;

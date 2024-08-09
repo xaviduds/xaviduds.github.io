@@ -136,6 +136,7 @@
   environment = {
     systemPackages = with pkgs; [
       git
+      gimp
       alacritty
       helix
       nixfmt-rfc-style
@@ -146,6 +147,8 @@
       librewolf
       zip
       unzip
+      lazygit
+      chromium
     ];
   };
 
